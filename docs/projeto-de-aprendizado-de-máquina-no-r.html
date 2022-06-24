@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Projeto de Aprendizado de Máquina no R | CAPITULO 1 - APRENDIZADO DE MÁQUINA</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Projeto de Aprendizado de Máquina no R | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Projeto de Aprendizado de Máquina no R | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Mateus Silva Rocha" />
+
+
+<meta name="date" content="2022-06-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="projeto-de-aprendizado-de-máquina-no-python.html"/>
+<link rel="next" href="referências.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>INTRODUÇÃO</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html"><i class="fa fa-check"></i>PRINCIPAIS PARADIGMAS DE APRENDIZADO</a>
+<ul>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#supervisionado"><i class="fa fa-check"></i>Supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#não-supervisionado"><i class="fa fa-check"></i>Não supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#aprendizado-por-reforço"><i class="fa fa-check"></i>Aprendizado por reforço</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><i class="fa fa-check"></i>PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA</a>
+<ul>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#entendimento-do-problema-e-coleta-de-dados"><i class="fa fa-check"></i>Entendimento do problema e coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#divisão-do-conjunto-de-dados"><i class="fa fa-check"></i>Divisão do conjunto de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#análise-exploratória"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#imputação-e-transformação-dos-dados"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#comparação-de-modelos"><i class="fa fa-check"></i>Comparação de modelos</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#aprimoramento-do-modelo"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#teste-final"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html"><i class="fa fa-check"></i>ALGORITMOS PREDITIVOS</a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#k-vizinhos-mais-próximos"><i class="fa fa-check"></i>K-vizinhos mais próximos</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#árvore-de-decisão"><i class="fa fa-check"></i>Árvore de decisão</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#suport-vector-machinemáquinas-de-vetores-de-suporte"><i class="fa fa-check"></i><em>Suport Vector Machine</em>(Máquinas de vetores de suporte)</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-logística"><i class="fa fa-check"></i>Regressão Logística</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#naive-bayes"><i class="fa fa-check"></i><em>Naive Bayes</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#modelos-ensemble"><i class="fa fa-check"></i>Modelos <em>Ensemble</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#random-forest"><i class="fa fa-check"></i><em>Random Forest</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#adaboost"><i class="fa fa-check"></i><em>AdaBoost</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#gradient-boost"><i class="fa fa-check"></i><em>Gradient Boost</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html"><i class="fa fa-check"></i>MÉTRICAS PARA AVALIAÇÃO</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#subajuste-e-sobreajuste"><i class="fa fa-check"></i>Subajuste e Sobreajuste</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-classificação"><i class="fa fa-check"></i>Métricas para Classificação</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#matriz-de-confusão"><i class="fa fa-check"></i>Matriz de Confusão</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#acurácia"><i class="fa fa-check"></i>Acurácia</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#precisionprecisão"><i class="fa fa-check"></i><em>Precision</em>(Precisão)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#recallrevocação"><i class="fa fa-check"></i><em>Recall</em>(Revocação)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#f1-scorepontuação-f1"><i class="fa fa-check"></i>F1 <em>score</em>(Pontuação F1)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-roc"><i class="fa fa-check"></i>Curva <em>ROC</em></a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-de-calibração"><i class="fa fa-check"></i>Curva de calibração</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-regressão"><i class="fa fa-check"></i>Métricas para Regressão</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#mseerro-quadrático-médio"><i class="fa fa-check"></i><em>MSE</em>(Erro quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#rmseraiz-quadrada-do-erro-quadrático-médio"><i class="fa fa-check"></i><em>RMSE</em>(Raiz Quadrada do Erro Quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#maeerro-médio-absoluto"><i class="fa fa-check"></i><em>MAE</em>(Erro médio absoluto)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no <em>python</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#entendimento-do-problema"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#bibliotecas-utilizadas"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#coleta-de-dados"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#divisão-dos-dados"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#análise-exploratória-1"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#imputação-e-transformação-dos-dados-1"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#comparação-entre-modelos"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#aprimoramento-do-modelo-1"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#teste-final-1"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no R</a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#entendimento-do-problema-1"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#bibliotecas-utilizadas-1"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#coleta-de-dados-1"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#divisão-dos-dados-1"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#análise-exploratória-2"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#imputação-e-transformação-dos-dados-2"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#comparação-entre-modelos-1"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#aprimoramento-do-modelo-2"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#teste-final-2"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAPITULO 1 - APRENDIZADO DE MÁQUINA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="projeto-de-aprendizado-de-máquina-no-r" class="section level1 unnumbered hasAnchor">
+<h1>Projeto de Aprendizado de Máquina no R<a href="projeto-de-aprendizado-de-máquina-no-r.html#projeto-de-aprendizado-de-máquina-no-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="entendimento-do-problema-1" class="section level2 unnumbered hasAnchor">
+<h2>Entendimento do problema<a href="projeto-de-aprendizado-de-máquina-no-r.html#entendimento-do-problema-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O presente projeto de aprendizado de máquina, tem como objetivo predizer os custos
+médicos. O conjunto de dados possui as seguintes colunas:</p>
+<ul>
+<li><em>age</em>: Idade do paciente;</li>
+<li><em>sex</em>: Sexo do paciente;</li>
+<li><em>bmi</em>: Indice de massa corporal;</li>
+<li><em>children</em>: Número de dependentes;</li>
+<li><em>smoker</em>: Se fuma ou não;</li>
+<li><em>region</em>: Área residencial nos Estados Unidos;</li>
+<li><em>charges</em>: Custos médicos.</li>
+</ul>
+</div>
+<div id="bibliotecas-utilizadas-1" class="section level2 unnumbered hasAnchor">
+<h2>Bibliotecas utilizadas<a href="projeto-de-aprendizado-de-máquina-no-r.html#bibliotecas-utilizadas-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para realizar a análise, serão utilizadas as seguintes bibliotecas:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-35">Table 2: </span>Descrição dos pacotes</caption>
+<colgroup>
+<col width="15%" />
+<col width="84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">pacotes</th>
+<th align="left">descricao_pacotes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">skimr</td>
+<td align="left">Pacote para resumos descritivos</td>
+</tr>
+<tr class="even">
+<td align="left">tidyverse</td>
+<td align="left">Conjunto de pacotes para visualização e manipulação dos dados</td>
+</tr>
+<tr class="odd">
+<td align="left">tidymodels</td>
+<td align="left">Pacotes para as etapas de aprendizado de máquina</td>
+</tr>
+</tbody>
+</table>
+<p>Para a realização do <em>download</em> dos pacotes listados acima, deve-se em primeiro
+lugar ter instalado o Rstudio. Feito isso, basta colocar os seguintes comandos
+na barra de <em>console</em>:</p>
+<blockquote>
+<p>install.packages(‘skimr’)</p>
+</blockquote>
+<blockquote>
+<p>install.packages(‘tidyverse’)</p>
+</blockquote>
+<blockquote>
+<p>install.packages(‘tidymodels’)</p>
+</blockquote>
+<blockquote>
+<p>install.packages(‘ranger’)</p>
+</blockquote>
+<blockquote>
+<p>install.packages(‘kknn’)</p>
+</blockquote>
+</div>
+<div id="coleta-de-dados-1" class="section level2 unnumbered hasAnchor">
+<h2>Coleta de dados<a href="projeto-de-aprendizado-de-máquina-no-r.html#coleta-de-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A aquisição dos dados se deu pelo site <a href="&#39;https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download&#39;"><em>kaggle</em></a>. Os
+dados estão em um arquivo .csv:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb36-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code></pre></div>
+<pre><code>## ── Attaching packages ────────────────────────────────────── tidymodels 0.2.0 ──</code></pre>
+<pre><code>## ✔ broom        0.8.0     ✔ recipes      0.2.0
+## ✔ dials        0.1.1     ✔ rsample      0.1.1
+## ✔ dplyr        1.0.9     ✔ tibble       3.1.7
+## ✔ ggplot2      3.3.6     ✔ tidyr        1.2.0
+## ✔ infer        1.0.2     ✔ tune         0.2.0
+## ✔ modeldata    0.1.1     ✔ workflows    0.2.6
+## ✔ parsnip      0.2.1     ✔ workflowsets 0.2.1
+## ✔ purrr        0.3.4     ✔ yardstick    1.0.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+## ✖ purrr::discard() masks scales::discard()
+## ✖ dplyr::filter()  masks stats::filter()
+## ✖ dplyr::lag()     masks stats::lag()
+## ✖ recipes::step()  masks stats::step()
+## • Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✔ readr   2.1.2     ✔ forcats 0.5.1
+## ✔ stringr 1.4.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ readr::col_factor() masks scales::col_factor()
+## ✖ purrr::discard()    masks scales::discard()
+## ✖ dplyr::filter()     masks stats::filter()
+## ✖ stringr::fixed()    masks recipes::fixed()
+## ✖ dplyr::lag()        masks stats::lag()
+## ✖ readr::spec()       masks yardstick::spec()</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb44-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;insurance.csv&#39;</span>)</span></code></pre></div>
+</div>
+<div id="divisão-dos-dados-1" class="section level2 unnumbered hasAnchor">
+<h2>Divisão dos dados<a href="projeto-de-aprendizado-de-máquina-no-r.html#divisão-dos-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Antes de iniciar a divisão, vamos obervar se há valores nulos na variável alvo.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(df) <span class="sc">%&gt;%</span> <span class="fu">yank</span>(<span class="st">&#39;numeric&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(skim_variable,n_missing, complete_rate, mean, sd)</span></code></pre></div>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">age</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">39,21</td>
+<td align="right">14,05</td>
+</tr>
+<tr class="even">
+<td align="left">bmi</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">30,66</td>
+<td align="right">6,10</td>
+</tr>
+<tr class="odd">
+<td align="left">children</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1,09</td>
+<td align="right">1,21</td>
+</tr>
+<tr class="even">
+<td align="left">charges</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">13270,42</td>
+<td align="right">12110,01</td>
+</tr>
+</tbody>
+</table>
+<p>A notação com o operador ‘%&gt;%’ também chamado de <em>pipe</em> será utilizada até o fim do projeto. Ela
+é proviniente do pacote <em>dplyr</em> dentro do pacote <em>tidyverse</em> e tem como função pegar o valor a esquerda
+e aplicar alguma outra funcionalidade. Como no exemplo acima, que pegará o resumo feito pela função do lado
+esquerdo e filtrar apenas as colunas numéricas.</p>
+<p>Observe também que não há valores ausentes da coluna alvo, logo podemos realizar a
+divisão.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>) <span class="co"># tomando uma semente constante</span></span>
+<span id="cb46-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb46-2" aria-hidden="true" tabindex="-1"></a>divisao_dados <span class="ot">=</span> <span class="fu">initial_split</span>(df)</span>
+<span id="cb46-3"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb46-3" aria-hidden="true" tabindex="-1"></a>df_treino <span class="ot">=</span> <span class="fu">training</span>(divisao_dados)</span>
+<span id="cb46-4"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb46-4" aria-hidden="true" tabindex="-1"></a>df_teste <span class="ot">=</span> <span class="fu">testing</span>(divisao_dados)</span></code></pre></div>
+</div>
+<div id="análise-exploratória-2" class="section level2 unnumbered hasAnchor">
+<h2>Análise exploratória<a href="projeto-de-aprendizado-de-máquina-no-r.html#análise-exploratória-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Observe abaixo uma análise descritiva dos dados:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(df) <span class="sc">%&gt;%</span> <span class="fu">yank</span>(<span class="st">&#39;numeric&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(skim_variable,n_missing, complete_rate, mean, sd)</span></code></pre></div>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">age</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">39,21</td>
+<td align="right">14,05</td>
+</tr>
+<tr class="even">
+<td align="left">bmi</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">30,66</td>
+<td align="right">6,10</td>
+</tr>
+<tr class="odd">
+<td align="left">children</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1,09</td>
+<td align="right">1,21</td>
+</tr>
+<tr class="even">
+<td align="left">charges</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">13270,42</td>
+<td align="right">12110,01</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(df_treino) <span class="sc">%&gt;%</span> <span class="fu">yank</span>(<span class="st">&#39;character&#39;</span>)</span></code></pre></div>
+<p><strong>Variable type: character</strong></p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="13%" />
+<col width="19%" />
+<col width="5%" />
+<col width="5%" />
+<col width="8%" />
+<col width="12%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">sex</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">smoker</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">region</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Agora vamos observar o comportamento de algumas variáveis. Para a visualização dos dados, foi utilizada
+o pacote <em>ggplot2</em>.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">=</span> df_treino <span class="sc">%&gt;%</span> <span class="fu">count</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>sex,<span class="at">y=</span>n, <span class="at">fill =</span> sex)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>)</span>
+<span id="cb49-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb49-2" aria-hidden="true" tabindex="-1"></a>grafico</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb50-1" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">=</span> df_treino <span class="sc">%&gt;%</span> <span class="fu">count</span>(smoker) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> smoker,<span class="at">y=</span>n, <span class="at">fill =</span> smoker)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span><span class="st">&#39;identity&#39;</span>)</span>
+<span id="cb50-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb50-2" aria-hidden="true" tabindex="-1"></a>grafico</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb51-1" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">=</span> df_treino <span class="sc">%&gt;%</span> <span class="fu">count</span>(region) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> n, <span class="at">fill =</span> n)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>)</span>
+<span id="cb51-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb51-2" aria-hidden="true" tabindex="-1"></a>grafico</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb52-1" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">=</span> df_treino <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>)</span>
+<span id="cb52-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb52-2" aria-hidden="true" tabindex="-1"></a>grafico</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb54-1" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">=</span> df_treino <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span>children)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>)</span>
+<span id="cb54-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb54-2" aria-hidden="true" tabindex="-1"></a>grafico</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb56-1" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">=</span> df_treino <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span>charges)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>)</span>
+<span id="cb56-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb56-2" aria-hidden="true" tabindex="-1"></a>grafico</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</div>
+<div id="imputação-e-transformação-dos-dados-2" class="section level2 unnumbered hasAnchor">
+<h2>Imputação e transformação dos dados<a href="projeto-de-aprendizado-de-máquina-no-r.html#imputação-e-transformação-dos-dados-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para a imputação e transformação dos dados, foi utilizado o pacote <em>recipes</em> do
+tidymodels:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb58-1" aria-hidden="true" tabindex="-1"></a>receita <span class="ot">=</span> <span class="fu">recipe</span>(charges <span class="sc">~</span> .,df_treino) <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb58-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">step_impute_median</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb58-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">step_impute_mode</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb58-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb58-5"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb58-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb58-6"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb58-7" aria-hidden="true" tabindex="-1"></a>receita</span></code></pre></div>
+<pre><code>## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          6
+## 
+## Operations:
+## 
+## Median imputation for all_numeric_predictors()
+## Mode imputation for all_nominal_predictors()
+## Dummy variables from all_nominal_predictors()
+## Centering and scaling for all_numeric_predictors()</code></pre>
+<p>O <em>recipes</em> funciona como uma receita de bolo: primeiro definimos qual variável
+é a alvo e quais são as preditoras, feito isso os proximos passos são definir quais
+imputações e transformações utilizar. Atenção, o processo de transformação é sempre
+no final das imputações.</p>
+</div>
+<div id="comparação-entre-modelos-1" class="section level2 unnumbered hasAnchor">
+<h2>Comparação entre modelos<a href="projeto-de-aprendizado-de-máquina-no-r.html#comparação-entre-modelos-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos utilizar a técnica de validação cruzada para o processo de treino e comparação
+de modelos.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb60-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb60-2" aria-hidden="true" tabindex="-1"></a>validacao_cruzada <span class="ot">=</span> <span class="fu">vfold_cv</span>(df_treino,<span class="at">v =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p>Para a implementação dos modelos, utilizamos o pacote <em>pasnip</em> incluida no <em>tidymodels</em>.
+A estruturação do pacote <em>pasnip</em> se comporta da seguinte maneira:</p>
+<p>modelo %&gt;% modo(classificação ou regressão) %&gt;% motor(<em>engine</em>)</p>
+<p>O modelo seria qual modelo de aprendizado de máquina escolher, como por exemplo
+o <em>random forest</em>, o modo pode ser classificação ou regressão, já o motor seria
+qual pacote no R que deve ser usado para implementar o modelo</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb61-1" aria-hidden="true" tabindex="-1"></a>random_forest <span class="ot">=</span> <span class="fu">rand_forest</span>() <span class="sc">%&gt;%</span> <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">&#39;ranger&#39;</span>)</span>
+<span id="cb61-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb61-2" aria-hidden="true" tabindex="-1"></a>random_forest</span></code></pre></div>
+<pre><code>## Random Forest Model Specification (regression)
+## 
+## Computational engine: ranger</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb63-1" aria-hidden="true" tabindex="-1"></a>linear <span class="ot">=</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">&#39;lm&#39;</span>)</span>
+<span id="cb63-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb63-2" aria-hidden="true" tabindex="-1"></a>linear</span></code></pre></div>
+<pre><code>## Linear Regression Model Specification (regression)
+## 
+## Computational engine: lm</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb65-1" aria-hidden="true" tabindex="-1"></a>vizinho_proximo <span class="ot">=</span> <span class="fu">nearest_neighbor</span>() <span class="sc">%&gt;%</span> <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">&#39;kknn&#39;</span>)</span></code></pre></div>
+<p>Implementado os modelos, agora vamos criar um container para juntar todo o pré-processamento
+com os dados de treino:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb66-1" aria-hidden="true" tabindex="-1"></a>wf<span class="ot">=</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_recipe</span>(receita)</span></code></pre></div>
+<p>Agora vamos observar os resultados de cada modelo:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb67-1" aria-hidden="true" tabindex="-1"></a>random_resultado <span class="ot">=</span> wf <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(random_forest) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb67-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">fit_resamples</span>( <span class="at">resamples =</span> validacao_cruzada,</span>
+<span id="cb67-3"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb67-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> T, <span class="at">verbose =</span> F),</span>
+<span id="cb67-4"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb67-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse))</span>
+<span id="cb67-5"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(random_resultado)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 6
+##   .metric .estimator  mean     n std_err .config             
+##   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+## 1 rmse    standard   5336.     5    239. Preprocessor1_Model1</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb69-1" aria-hidden="true" tabindex="-1"></a>linear_resultado <span class="ot">=</span> wf <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(linear) <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb69-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">fit_resamples</span>(<span class="at">resamples =</span> validacao_cruzada,</span>
+<span id="cb69-3"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb69-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> T,<span class="at">verbose =</span> F),</span>
+<span id="cb69-4"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb69-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse))</span>
+<span id="cb69-5"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(linear_resultado)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 6
+##   .metric .estimator  mean     n std_err .config             
+##   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+## 1 rmse    standard   6130.     5    272. Preprocessor1_Model1</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb71-1" aria-hidden="true" tabindex="-1"></a>vizinho_resultado <span class="ot">=</span> wf <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(vizinho_proximo) <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb71-2" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">fit_resamples</span>(<span class="at">resamples =</span> validacao_cruzada,</span>
+<span id="cb71-3"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb71-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> T, <span class="at">verbose =</span> F),</span>
+<span id="cb71-4"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb71-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse))</span>
+<span id="cb71-5"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-6"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(vizinho_resultado)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 6
+##   .metric .estimator  mean     n std_err .config             
+##   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+## 1 rmse    standard   5757.     5    247. Preprocessor1_Model1</code></pre>
+<p>Observe que o <em>random forest</em> obteve o melhor desempenho, portanto será escolhido.</p>
+</div>
+<div id="aprimoramento-do-modelo-2" class="section level2 unnumbered hasAnchor">
+<h2>Aprimoramento do modelo<a href="projeto-de-aprendizado-de-máquina-no-r.html#aprimoramento-do-modelo-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para o aprimoramento do modelo, foi considerado dois hiperparâmetros:</p>
+<ul>
+<li><p><em>mtry:</em> número de atributos aleatóriamente selecionados para serem usadas em cada divisão dos dados.</p></li>
+<li><p><em>trees:</em> Quantidade de árvores a ser utilizada.</p></li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-1" aria-hidden="true" tabindex="-1"></a>random_tune <span class="ot">=</span> <span class="fu">rand_forest</span>( <span class="at">mtry =</span> <span class="fu">tune</span>(),<span class="at">trees =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-2" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-3" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">set_engine</span>(<span class="st">&#39;ranger&#39;</span>)</span>
+<span id="cb73-4"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-5" aria-hidden="true" tabindex="-1"></a>modelo_final <span class="ot">=</span> wf <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(random_tune) <span class="co"># criando o modelo final</span></span>
+<span id="cb73-6"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-7"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-7" aria-hidden="true" tabindex="-1"></a>random_grid <span class="ot">=</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb73-8"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mtry =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>),</span>
+<span id="cb73-9"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">trees =</span> <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">200</span>,<span class="dv">300</span>,<span class="dv">400</span>,<span class="dv">500</span>)) <span class="co"># criando a grade</span></span>
+<span id="cb73-10"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-11"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-11" aria-hidden="true" tabindex="-1"></a>tunagem <span class="ot">=</span> modelo_final <span class="sc">%&gt;%</span> <span class="fu">tune_grid</span>(<span class="at">resamples =</span> validacao_cruzada,</span>
+<span id="cb73-12"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-12" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">grid =</span> random_grid) <span class="co"># implementando a tunagem</span></span>
+<span id="cb73-13"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-14"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb73-14" aria-hidden="true" tabindex="-1"></a><span class="fu">show_best</span>(tunagem, <span class="at">metric =</span> <span class="st">&#39;rmse&#39;</span>) <span class="co"># mostrando os melhores resultados </span></span></code></pre></div>
+<pre><code>## # A tibble: 5 × 8
+##    mtry trees .metric .estimator  mean     n std_err .config              
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
+## 1     4   400 rmse    standard   4721.     5    232. Preprocessor1_Model12
+## 2     4   500 rmse    standard   4724.     5    228. Preprocessor1_Model15
+## 3     4   300 rmse    standard   4736.     5    238. Preprocessor1_Model09
+## 4     4   200 rmse    standard   4740.     5    239. Preprocessor1_Model06
+## 5     4   100 rmse    standard   4752.     5    258. Preprocessor1_Model03</code></pre>
+</div>
+<div id="teste-final-2" class="section level2 unnumbered hasAnchor">
+<h2>Teste final<a href="projeto-de-aprendizado-de-máquina-no-r.html#teste-final-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Por fim, vamos implementar o teste final do modelo. Para isso usamos o comando <em>finalize_workflow</em> para
+não só usar o modelo final com a tunagem, mas também para realizar o teste.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb75-1" aria-hidden="true" tabindex="-1"></a>modelo_finalizado <span class="ot">=</span>  <span class="fu">finalize_workflow</span>(modelo_final, </span>
+<span id="cb75-2"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb75-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">select_best</span>(tunagem, <span class="at">metric =</span> <span class="st">&#39;rmse&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb75-3"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb75-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">last_fit</span>(divisao_dados, <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse))</span>
+<span id="cb75-4"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb75-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="projeto-de-aprendizado-de-máquina-no-r.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(modelo_finalizado)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 4
+##   .metric .estimator .estimate .config             
+##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+## 1 rmse    standard       4586. Preprocessor1_Model1</code></pre>
+<p>Observe que ele se mostrou com um bom desempenho.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="projeto-de-aprendizado-de-máquina-no-python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referências.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-praticasr.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

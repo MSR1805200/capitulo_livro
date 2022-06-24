@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>MÉTRICAS PARA AVALIAÇÃO | CAPITULO 1 - APRENDIZADO DE MÁQUINA</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="MÉTRICAS PARA AVALIAÇÃO | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="MÉTRICAS PARA AVALIAÇÃO | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Mateus Silva Rocha" />
+
+
+<meta name="date" content="2022-06-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="algoritmos-preditivos.html"/>
+<link rel="next" href="projeto-de-aprendizado-de-máquina-no-python.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>INTRODUÇÃO</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html"><i class="fa fa-check"></i>PRINCIPAIS PARADIGMAS DE APRENDIZADO</a>
+<ul>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#supervisionado"><i class="fa fa-check"></i>Supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#não-supervisionado"><i class="fa fa-check"></i>Não supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#aprendizado-por-reforço"><i class="fa fa-check"></i>Aprendizado por reforço</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><i class="fa fa-check"></i>PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA</a>
+<ul>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#entendimento-do-problema-e-coleta-de-dados"><i class="fa fa-check"></i>Entendimento do problema e coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#divisão-do-conjunto-de-dados"><i class="fa fa-check"></i>Divisão do conjunto de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#análise-exploratória"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#imputação-e-transformação-dos-dados"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#comparação-de-modelos"><i class="fa fa-check"></i>Comparação de modelos</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#aprimoramento-do-modelo"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#teste-final"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html"><i class="fa fa-check"></i>ALGORITMOS PREDITIVOS</a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#k-vizinhos-mais-próximos"><i class="fa fa-check"></i>K-vizinhos mais próximos</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#árvore-de-decisão"><i class="fa fa-check"></i>Árvore de decisão</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#suport-vector-machinemáquinas-de-vetores-de-suporte"><i class="fa fa-check"></i><em>Suport Vector Machine</em>(Máquinas de vetores de suporte)</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-logística"><i class="fa fa-check"></i>Regressão Logística</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#naive-bayes"><i class="fa fa-check"></i><em>Naive Bayes</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#modelos-ensemble"><i class="fa fa-check"></i>Modelos <em>Ensemble</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#random-forest"><i class="fa fa-check"></i><em>Random Forest</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#adaboost"><i class="fa fa-check"></i><em>AdaBoost</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#gradient-boost"><i class="fa fa-check"></i><em>Gradient Boost</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html"><i class="fa fa-check"></i>MÉTRICAS PARA AVALIAÇÃO</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#subajuste-e-sobreajuste"><i class="fa fa-check"></i>Subajuste e Sobreajuste</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-classificação"><i class="fa fa-check"></i>Métricas para Classificação</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#matriz-de-confusão"><i class="fa fa-check"></i>Matriz de Confusão</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#acurácia"><i class="fa fa-check"></i>Acurácia</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#precisionprecisão"><i class="fa fa-check"></i><em>Precision</em>(Precisão)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#recallrevocação"><i class="fa fa-check"></i><em>Recall</em>(Revocação)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#f1-scorepontuação-f1"><i class="fa fa-check"></i>F1 <em>score</em>(Pontuação F1)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-roc"><i class="fa fa-check"></i>Curva <em>ROC</em></a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-de-calibração"><i class="fa fa-check"></i>Curva de calibração</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-regressão"><i class="fa fa-check"></i>Métricas para Regressão</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#mseerro-quadrático-médio"><i class="fa fa-check"></i><em>MSE</em>(Erro quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#rmseraiz-quadrada-do-erro-quadrático-médio"><i class="fa fa-check"></i><em>RMSE</em>(Raiz Quadrada do Erro Quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#maeerro-médio-absoluto"><i class="fa fa-check"></i><em>MAE</em>(Erro médio absoluto)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no <em>python</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#entendimento-do-problema"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#bibliotecas-utilizadas"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#coleta-de-dados"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#divisão-dos-dados"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#análise-exploratória-1"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#imputação-e-transformação-dos-dados-1"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#comparação-entre-modelos"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#aprimoramento-do-modelo-1"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#teste-final-1"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no R</a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#entendimento-do-problema-1"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#bibliotecas-utilizadas-1"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#coleta-de-dados-1"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#divisão-dos-dados-1"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#análise-exploratória-2"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#imputação-e-transformação-dos-dados-2"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#comparação-entre-modelos-1"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#aprimoramento-do-modelo-2"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#teste-final-2"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAPITULO 1 - APRENDIZADO DE MÁQUINA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="métricas-para-avaliação" class="section level1 unnumbered hasAnchor">
+<h1>MÉTRICAS PARA AVALIAÇÃO<a href="métricas-para-avaliação.html#métricas-para-avaliação" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="subajuste-e-sobreajuste" class="section level2 unnumbered hasAnchor">
+<h2>Subajuste e Sobreajuste<a href="métricas-para-avaliação.html#subajuste-e-sobreajuste" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O subajuste e sobreajuste são um dos principais conceitos que norteiam o campo
+do aprendizado de máquina. Estão ligados ao desempenho do modelo e sua capacidade
+de generalização, dado um conjunto de dados. O sobreajutes ou também chamado de
+variância, é a capacidade do algoritmo conseguir generalizar bem para novos conjuntos
+de dados, isso que significa que se tivermos um algoritmo que foi bem na etapa de
+treinamento, porém foi péssimo na etapa de teste, ele possui uma alta variância ou
+pode se dizer que ele se sobreajustou aos dados de treino. Já o subajuste, lida
+com a precisão do modelo. Caso um classificador não consiga um desempenho satisfatório
+no conjunto de dados de treino e no de teste, temos que ele está subajustado ou
+possui um alto viés.</p>
+</div>
+<div id="métricas-para-classificação" class="section level2 unnumbered hasAnchor">
+<h2>Métricas para Classificação<a href="métricas-para-avaliação.html#métricas-para-classificação" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="matriz-de-confusão" class="section level3 unnumbered hasAnchor">
+<h3>Matriz de Confusão<a href="métricas-para-avaliação.html#matriz-de-confusão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A matriz de confusão é uma métrica que cria uma matriz quadrada com um número <span class="math inline">\(j\)</span> de
+classes<span class="citation">(Géron 2017)</span>. Em uma classificação binária,temos:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="figuras/matriz_confusao_2.png" alt="Matriz de confusão (Moraes Batista and Chiavegatto Filho 2019)" width="376" />
+<p class="caption">
+Figure 10: Matriz de confusão (Moraes Batista and Chiavegatto Filho 2019)
+</p>
+</div>
+<ul>
+<li><p><strong>Verdadeiros positivos:</strong> Quando o algoritmo prediz corretamente a classe positiva.</p></li>
+<li><p><strong>Verdadeiros negativos:</strong> Quando o algoritmo prediz corretamente a classe negativa.</p></li>
+<li><p><strong>Falsos positivos:</strong> Quando o algoritmo prediz uma instância negativa como positiva.</p></li>
+<li><p><strong>Falsos negativos:</strong> Quando o algotitmo prediz uma instância positiva como negativa.</p></li>
+</ul>
+<p>Esses quatro conceitos serão utilizados como componentes para as próximas métrcias.</p>
+</div>
+<div id="acurácia" class="section level3 unnumbered hasAnchor">
+<h3>Acurácia<a href="métricas-para-avaliação.html#acurácia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A acurácia é a medida mais comumente utilizada. Ela é basicamente a soma dos
+acertos do classificador dividido pelo total de instâncias:</p>
+<p><span class="math display" id="eq:acuracia">\[\begin{equation}
+Acurácia = \frac{VP + VN}{VP+FP + VN + FN}
+\tag{14}
+\end{equation}\]</span></p>
+<p>É preciso muito cuidado quando se utilizar essa métrica, pois torna-se bastante
+enviesada quando o conjunto de dados está com classes desbalanceadas.</p>
+</div>
+<div id="precisionprecisão" class="section level3 unnumbered hasAnchor">
+<h3><em>Precision</em>(Precisão)<a href="métricas-para-avaliação.html#precisionprecisão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Precision</em>(Precisão), também chamada de acurácia das predições positivas, é a razão entre
+os verdadeiros positivos com a soma dos verdadeiros positivos e os falsos positivos<span class="citation">(Géron 2017)</span>:</p>
+<p><span class="math display" id="eq:precision">\[\begin{equation}
+Precison = \frac{VP}{VP+FP}
+\tag{15}
+\end{equation}\]</span></p>
+<p>Pela natureza da equação, valores muito baixos indicam que há uma grande presença
+de falsos positivos que o modelo classificou errado.</p>
+</div>
+<div id="recallrevocação" class="section level3 unnumbered hasAnchor">
+<h3><em>Recall</em>(Revocação)<a href="métricas-para-avaliação.html#recallrevocação" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Recall</em>(Revocação) ou taxa de verdadeiros positivos, trata-se da proporção de
+elementos positivos que são corretamente identificadas pelo modelo<span class="citation">(Géron 2017)</span>:</p>
+<p><span class="math display" id="eq:recall">\[\begin{equation}
+Recall = \frac{VP}{VP+FN}
+\tag{16}
+\end{equation}\]</span></p>
+<p>Essa métrica é mais sensível aos falsos negativos, isso significa que valores
+baixos indicam uma alta presença de falsos negativos que o modelo classificou
+errôneamente.</p>
+</div>
+<div id="f1-scorepontuação-f1" class="section level3 unnumbered hasAnchor">
+<h3>F1 <em>score</em>(Pontuação F1)<a href="métricas-para-avaliação.html#f1-scorepontuação-f1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>F1 <em>score</em> é a média harmônica das métricas precisão com a revocação. Ela é uma
+medida alternativa que serve para resumir as duas métricas<span class="citation">(Géron 2017)</span>:</p>
+<p><span class="math display" id="eq:f1">\[\begin{equation}
+F1 = 2 . \frac{Precision . Recall}{Precision + Recall}
+\tag{17}
+\end{equation}\]</span></p>
+<p>Valores baixos nessa métrica indicam que o modelo não esta com um desempenho satisfatório.</p>
+</div>
+<div id="curva-roc" class="section level3 unnumbered hasAnchor">
+<h3>Curva <em>ROC</em><a href="métricas-para-avaliação.html#curva-roc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A curva <em>ROC</em> ou curva característica de operação(<em>receiver operating characteristic</em>) é um gráfico
+usado em classificações binárias, onde o eixo <span class="math inline">\(x\)</span> representam a taxa de falsos positivos e o
+eixo <span class="math inline">\(y\)</span> representam a taxa de verdadeiros positivos ou revocação <span class="citation">(Géron 2017)</span>. Quanto maior a curva,
+melhor o classificador. Uma forma mais utilizada é computar a área sob a curva.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="figuras/roc_3.png" alt="Curva ROC (Géron 2017)" width="522" />
+<p class="caption">
+Figure 11: Curva ROC (Géron 2017)
+</p>
+</div>
+</div>
+<div id="curva-de-calibração" class="section level3 unnumbered hasAnchor">
+<h3>Curva de calibração<a href="métricas-para-avaliação.html#curva-de-calibração" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A curva de calibração é um gráfico que mostra o agrupamento das predições em forma
+de probabilidade no eixo <span class="math inline">\(x\)</span> e a frequência do evento nos agrupamentos no eixo
+<span class="math inline">\(y\)</span> <span class="citation">(Moraes Batista and Chiavegatto Filho 2019)</span>. Para um modelo ser perfeitamente calibrado, deve conter a mesma probabilidade
+tanto no eixo horizontal quanto no eixo vertical. Valores anômalos com probabilidade
+alta ou baixa define um modelo mal calibrado.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="figuras/calibracao_2.png" alt="Curva de calibração (Moraes Batista and Chiavegatto Filho 2019)" width="366" />
+<p class="caption">
+Figure 12: Curva de calibração (Moraes Batista and Chiavegatto Filho 2019)
+</p>
+</div>
+</div>
+</div>
+<div id="métricas-para-regressão" class="section level2 unnumbered hasAnchor">
+<h2>Métricas para Regressão<a href="métricas-para-avaliação.html#métricas-para-regressão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Diferentemente das métricas de classificação, as de regressão visam diminuir
+o valor e não aumentar. Quando menor for o valor de uma métrica de regressão
+ou função de custo, melhor é o modelo.</p>
+<div id="mseerro-quadrático-médio" class="section level3 unnumbered hasAnchor">
+<h3><em>MSE</em>(Erro quadrático Médio)<a href="métricas-para-avaliação.html#mseerro-quadrático-médio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O <em>MSE</em> é uma das funções de custo mais famosas e utilizadas no campo da regressão.
+É o somatório da diferença ao quadrado do rótulo verdadeiro e o rótulo predito dividido
+pelo total de amostras:</p>
+<p><span class="math display" id="eq:MSE">\[\begin{equation}
+MSE = \frac{1}{n}\sum_{i}^{n}(y_{i} - ŷ_{i})^{2})
+\tag{18}
+\end{equation}\]</span></p>
+</div>
+<div id="rmseraiz-quadrada-do-erro-quadrático-médio" class="section level3 unnumbered hasAnchor">
+<h3><em>RMSE</em>(Raiz Quadrada do Erro Quadrático Médio)<a href="métricas-para-avaliação.html#rmseraiz-quadrada-do-erro-quadrático-médio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A métrica <em>RMSE</em> constitui-se da raiz do erro quadrático médio. Diferente do <em>MSE</em>,
+o <em>RMSE</em> é mais atenta a anomalias:</p>
+<p><span class="math display" id="eq:RMSE">\[\begin{equation}
+RMSE = \sqrt{ \frac{1}{n}\sum_{i}^{n}(y_{i} - ŷ_{i})^{2}}
+\tag{19}
+\end{equation}\]</span></p>
+</div>
+<div id="maeerro-médio-absoluto" class="section level3 unnumbered hasAnchor">
+<h3><em>MAE</em>(Erro médio absoluto)<a href="métricas-para-avaliação.html#maeerro-médio-absoluto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O erro médio absoluto trata-se da média do modulo da diferença entre o valor real
+e o valor predito:</p>
+<p><span class="math display" id="eq:MAE">\[\begin{equation}
+MAE = \frac{1}{n}\sum_{i}^{n}|y_{i} - ŷ_{i}|
+\tag{20}
+\end{equation}\]</span></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="algoritmos-preditivos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="projeto-de-aprendizado-de-máquina-no-python.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-metricas.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
