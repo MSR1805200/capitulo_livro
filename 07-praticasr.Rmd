@@ -1,0 +1,254 @@
+# Projeto de Aprendizado de Máquina no R {-}
+
+## Entendimento do problema {-}
+
+O presente projeto de aprendizado de máquina, tem como objetivo predizer os custos
+médicos. O conjunto de dados possui as seguintes colunas:
+
+- *age*: Idade do paciente;
+- *sex*: Sexo do paciente;
+- *bmi*: Indice de massa corporal;
+- *children*: Número de dependentes;
+- *smoker*: Se fuma ou não;
+- *region*: Área residencial nos Estados Unidos;
+- *charges*: Custos médicos.
+
+## Bibliotecas utilizadas {-}
+
+Para realizar a análise, serão utilizadas as seguintes bibliotecas:
+
+```{r echo = FALSE}
+
+pacotes = c('skimr','tidyverse','tidymodels')
+descricao_pacotes = c('Pacote para resumos descritivos', 'Conjunto de pacotes para visualização e manipulação dos dados', 'Pacotes para as etapas de aprendizado de máquina')
+
+dados_pacotes = cbind(pacotes,descricao_pacotes)
+
+knitr::kable(dados_pacotes,
+             caption = "Descrição dos pacotes")
+```
+
+Para a realização do *download* dos pacotes listados acima, deve-se em primeiro
+lugar ter instalado o Rstudio. Feito isso, basta colocar os seguintes comandos
+na barra de *console*:
+
+> install.packages('skimr')
+
+> install.packages('tidyverse')
+
+> install.packages('tidymodels')
+
+> install.packages('ranger')
+
+> install.packages('kknn')
+
+## Coleta de dados {-}
+
+A aquisição dos dados se deu pelo site [*kaggle*]('https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download'). Os 
+dados estão em um arquivo .csv:
+
+
+```{r}
+library(skimr)
+library(tidymodels)
+library(tidyverse)
+df = read.csv('insurance.csv')
+```
+
+## Divisão dos dados {-}
+
+Antes de iniciar a divisão, vamos obervar se há valores nulos na variável alvo.
+
+```{r}
+skim(df) %>% yank('numeric') %>% select(skim_variable,n_missing, complete_rate, mean, sd)
+```
+A notação com o operador '%>%' também chamado de *pipe* será utilizada até o fim do projeto. Ela
+é proviniente do pacote *dplyr* dentro do pacote *tidyverse* e tem como função pegar o valor a esquerda
+e aplicar alguma outra funcionalidade. Como no exemplo acima, que pegará o resumo feito pela função do lado
+esquerdo e filtrar apenas as colunas numéricas.
+
+Observe também que não há valores ausentes da coluna alvo, logo podemos realizar a
+divisão.
+
+```{r}
+set.seed(42) # tomando uma semente constante
+divisao_dados = initial_split(df)
+df_treino = training(divisao_dados)
+df_teste = testing(divisao_dados)
+```
+
+## Análise exploratória {-}
+
+Observe abaixo uma análise descritiva dos dados:
+
+```{r}
+skim(df) %>% yank('numeric') %>% select(skim_variable,n_missing, complete_rate, mean, sd)
+```
+
+```{r}
+skim(df_treino) %>% yank('character')
+```
+
+Agora vamos observar o comportamento de algumas variáveis. Para a visualização dos dados, foi utilizada
+o pacote *ggplot2*.
+
+```{r}
+grafico = df_treino %>% count(sex) %>% ggplot(aes(x=sex,y=n, fill = sex)) + geom_bar(stat='identity')
+grafico
+```
+
+```{r}
+grafico = df_treino %>% count(smoker) %>% ggplot(aes(x = smoker,y=n, fill = smoker)) + geom_bar(stat ='identity')
+grafico
+```
+
+```{r}
+grafico = df_treino %>% count(region) %>% ggplot(aes(x = region, y = n, fill = n)) + geom_bar(stat = 'identity')
+grafico
+```
+
+```{r}
+grafico = df_treino %>% ggplot(aes(x = age)) + geom_histogram(fill = 'blue', color = 'white')
+grafico
+```
+
+```{r}
+grafico = df_treino %>% ggplot(aes(x =children)) + geom_histogram(fill = 'blue', color = 'white')
+grafico
+```
+
+```{r}
+grafico = df_treino %>% ggplot(aes(x =charges)) + geom_histogram(fill = 'blue', color = 'white')
+grafico
+```
+
+## Imputação e transformação dos dados {-}
+
+Para a imputação e transformação dos dados, foi utilizado o pacote *recipes* do
+tidymodels:
+
+```{r}
+receita = recipe(charges ~ .,df_treino) %>%
+          step_impute_median(all_numeric_predictors()) %>%
+          step_impute_mode(all_nominal_predictors()) %>%
+          step_dummy(all_nominal_predictors()) %>%
+          step_normalize(all_numeric_predictors())
+
+receita
+```
+
+O *recipes* funciona como uma receita de bolo: primeiro definimos qual variável
+é a alvo e quais são as preditoras, feito isso os proximos passos são definir quais
+imputações e transformações utilizar. Atenção, o processo de transformação é sempre
+no final das imputações.
+
+
+## Comparação entre modelos {-}
+
+Vamos utilizar a técnica de validação cruzada para o processo de treino e comparação
+de modelos.
+
+```{r}
+set.seed(42)
+validacao_cruzada = vfold_cv(df_treino,v = 5)
+```
+Para a implementação dos modelos, utilizamos o pacote *pasnip* incluida no *tidymodels*.
+A estruturação do pacote *pasnip* se comporta da seguinte maneira:
+
+modelo %>% modo(classificação ou regressão) %>% motor(*engine*)
+
+O modelo seria qual modelo de aprendizado de máquina escolher, como por exemplo
+o *random forest*, o modo pode ser classificação ou regressão, já o motor seria
+qual pacote no R que deve ser usado para implementar o modelo
+
+```{r}
+random_forest = rand_forest() %>% set_mode('regression') %>% set_engine('ranger')
+random_forest
+```
+
+```{r}
+linear = linear_reg() %>% set_mode('regression') %>% set_engine('lm')
+linear
+```
+
+```{r}
+vizinho_proximo = nearest_neighbor() %>% set_mode('regression') %>% set_engine('kknn')
+```
+
+Implementado os modelos, agora vamos criar um container para juntar todo o pré-processamento
+com os dados de treino:
+
+```{r}
+wf= workflow() %>% add_recipe(receita)
+```
+
+Agora vamos observar os resultados de cada modelo:
+
+```{r}
+random_resultado = wf %>% add_model(random_forest) %>% 
+                          fit_resamples( resamples = validacao_cruzada,
+                          control = control_resamples(save_pred = T, verbose = F),
+                          metrics = metric_set(rmse))
+
+collect_metrics(random_resultado)
+```
+
+```{r}
+linear_resultado = wf %>% add_model(linear) %>% 
+                          fit_resamples(resamples = validacao_cruzada,
+                          control = control_resamples(save_pred = T,verbose = F),
+                          metrics = metric_set(rmse))
+collect_metrics(linear_resultado)
+```
+
+```{r}
+vizinho_resultado = wf %>% add_model(vizinho_proximo) %>%
+                           fit_resamples(resamples = validacao_cruzada,
+                           control = control_resamples(save_pred = T, verbose = F),
+                           metrics = metric_set(rmse))
+
+collect_metrics(vizinho_resultado)
+```
+ Observe que o *random forest* obteve o melhor desempenho, portanto será escolhido.
+
+## Aprimoramento do modelo {-}
+
+Para o aprimoramento do modelo, foi considerado dois hiperparâmetros:
+
+- *mtry:* número de atributos aleatóriamente selecionados para serem usadas em cada divisão dos dados.
+
+- *trees:* Quantidade de árvores a ser utilizada.
+
+```{r}
+
+random_tune = rand_forest( mtry = tune(),trees = tune()) %>%
+                   set_mode('regression') %>%
+                   set_engine('ranger')
+
+modelo_final = wf %>% add_model(random_tune) # criando o modelo final
+
+random_grid = expand.grid(
+  mtry = c(1,3,4),
+  trees = c(100,200,300,400,500)) # criando a grade
+
+tunagem = modelo_final %>% tune_grid(resamples = validacao_cruzada,
+                                     grid = random_grid) # implementando a tunagem
+
+show_best(tunagem, metric = 'rmse') # mostrando os melhores resultados 
+```
+
+## Teste final {-}
+
+Por fim, vamos implementar o teste final do modelo. Para isso usamos o comando *finalize_workflow* para
+não só usar o modelo final com a tunagem, mas também para realizar o teste.
+
+```{r}
+modelo_finalizado =  finalize_workflow(modelo_final, 
+                                      select_best(tunagem, metric = 'rmse')) %>%
+                                      last_fit(divisao_dados, metrics = metric_set(rmse))
+
+collect_metrics(modelo_finalizado)
+```
+
+Observe que ele se mostrou com um bom desempenho.
+

@@ -1,0 +1,59 @@
+# PRINCIPAIS PARADIGMAS DE APRENDIZADO {-}
+
+## Supervisionado {-}
+
+O aprendizado supervisionado consiste em um conjunto de dados rotulados que serão
+usados para alimentar o algoritmo de aprendizado de máquina, por exemplo uma base
+de dados para saber se um paciente possui uma determinada doença ou não[@geron2017hands]. O tipo
+de aprendizado supervisionado onde temos os rótulos em categorias damos o nome 
+de classificação, já quando os rótulos são contínuos como o preço de uma casa, damos o
+nome de regressão.
+
+
+```{r fig.cap = "Aprendizado supervisionado",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/supervisionado.png"))
+```
+
+
+Esse paradigma em específico é bem popular em vários campos da ciência, por exemplo
+na deteção de câncer de pele na área da saúde ou doenças em geral como o covid-19.
+Já no campo financeiro, é utilizado modelos que predizem dados contínuos em 
+relação ao faturamento da empresa.No campo linguistico, são implementados 
+classificadores pra detecção de emoções humanas ou até mesmo para entender 
+conversas, como por exemplo o que é conhecido como agentes conversacionais 
+ou *chatbot*, que usam exemplos de conversas entre seres humanos para poderem 
+interagirem. 
+
+## Não supervisionado {-}
+
+No paradigma de aprendizado não supervisionado não temos um conjunto de dados
+com rótulos pré-determinados. Nesse caso, é o próprio algoritmo de aprendizado
+de máquina que o identifica[@geron2017hands]. Por exemplo, temos o que é conhecido como agrupamento
+ou clusterização. O algoritmo pode ser utilizado para outros objetivos, tais
+como a detecção de anomalias ou redução de dimensionalidade.
+
+
+```{r fig.cap = "Aprendizado não supervisionado",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/nao_supervisionado_2.png"))
+```
+
+
+Esse tipo específico de algoritmo é bastante utilizado nas empresas para descobrir
+categorias(segmentos) de clientes ou pra detectar anomalias de compras de cartão
+de crédito para evitar fraudes, pois caso uma compra saida do padrão normal de 
+compras de um usuário, o algoritmo vai detectar e entrarão em contato.
+
+## Aprendizado por reforço {-}
+
+O paradigma de aprendizado por reforço funciona de uma forma completamente diferente
+dos outros paradigmas. Nele, temos um agente que, dados o estado atual e um ambiente, 
+seleciona a melhor ação a se tomar para maximizar sua recompensa, caso tome uma ação
+considerada como ruim, terá uma punição[@geron2017hands]. 
+
+```{r fig.cap = "Aprendizado por reforço",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/reforco.png"))
+```
+
+Suas aplicações são bem frequentes nos noticiários, como por exemplo o robô *DeepBlue*
+da IBM que consegue jogar xadrez como um enxadrista profissional e venceu o famoso jogador
+de xadrez Garry Kasparov.

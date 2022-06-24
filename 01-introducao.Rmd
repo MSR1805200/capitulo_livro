@@ -1,0 +1,20 @@
+# INTRODUÇÃO {-}
+
+O aprendizado de máquina pode ser entendido com um subcampo da inteligência artificial
+que tem como o objetivo de dá as máquinas a capacidade de aprender, dado um conjunto
+de dados [@geron2017hands]. A ênfase está nos dados, isso significa que um algoritmo de aprendizado de máquina
+aprende pelo processo indutivo isto é, aprende por exemplos já consolidados préviamente.
+
+O conceito de aprendizado de máquina é mais antiga do que aparenta ser. Alan Turing[@turing1950computing],
+pai da ciência da computação  já tinha nos mostrando um vislumbre de como seria os  
+sistemas inteligêntes que são utilizados hoje em dia, onde ensinariamos a aprender como se ensinássemos 
+a uma criança. Esse conceito foi cada vez mais convergindo para o que conhecemos 
+hoje em dia como aprendizado de máquina.
+
+Hoje em dia, com o advento da internet e do avanço das tecnologias de *hardware* e
+*software*, conseguimos coletar, processar e analisar as quantidade massivas de dados
+que a internet proporciona. Em consequência desse processo, temos uma valorização
+de especialistas que conseguem manipular dados brutos e transformar em conhecimento
+útil, como por exemplos, analistas e ciêntistas de dados. Estes profissionais utilizam
+ferramentas sofisticadas que tratam os dados provindos da internet. Dois exemplos
+populares são as linguagens de programação *R*[@R-base] e *Python*[@van1995python].

@@ -1,0 +1,113 @@
+# PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA {-}
+
+O processo de implementação de um modelo de aprendizado de máquina segue
+um conjunto de passos sistematizados que envolve desde a coleta dos dados
+propriamente ditos até a avaliação final do modelo.
+
+## Entendimento do problema e coleta de dados {-}
+
+Para começar a realizar um projeto ponta a ponta de aprendizado de máquina,
+deve-se ter em mente que tipo de problema se quer resolver e quais objetivos que
+precisam ser atingidos. Não se pode trabalhar com a implementação sem conhecer
+o problema que se quer resolver, pois impactará na forma que você desenvolve
+o projeto, quais modelos utilizar ou qual métrica será mais adequada.
+
+Definindo o problema e os objetivos, o proximo passso é coletar os dados. Dependendo
+do problema, os dados já estarão prontos para serem usados. Um exemplo seria se
+quisesse predizer quais pessoas sobreviveram no naufrágio do Titanic, nesse caso
+já temos uma plataforma *online* que nos dá o conjunto de dados de antemão denominado
+*Kaggle*. Caso não encontre nenhum banco de dados nas plataformas *online*, uma 
+possível alternativa seria realizar um processo de amostragem. Vale lembrar que
+a coleta possui papel central no projeto, pois se de algum modo estiver enviesada,
+esse viés reflitará no modelo final.
+
+## Divisão do conjunto de dados {-}
+
+Feito a coleta, antes de realizar qualquer análise, deve ser feito uma divisão
+na base de dados. A técnica mais utilizada nesse primeiro momento chama-se 
+*holdout*, onde é escolhido uma proporção $p$ para o conjunto de treino
+e seu complementar $1 - p$ será usado no conjunto de teste. Geralmente é
+utilizado $80\%$ dos dados totais para o treinamento e $20\%$ para o
+teste do modelo. 
+
+O conjunto de treinamento é bastante usado em todo o processo na criação do
+projeto. É nele que realizamos as análises e alimentamos os modelos. Já o conjunto
+de teste é utilizado apenas uma única vez na parte final do projeto com o objetivo
+de estimar o erro fora da amostra ou também chamado de erro de generalização.
+
+## Análise exploratória {-}
+
+Na análise exploratória é onde é feito as análises descritivas no conjunto de dados
+de treino, como por exemplo: medidas de tendências central, grau de disparidade, 
+etc. É feito gráficos para observar o comportamento e as relações entre variáveis. 
+É nele também onde podemos combinar variáveis para criar uma nova que talvez 
+ajude o modelo. Esse processo tem o nome de *feature engineering* ou engenharia 
+de recursos. 
+
+## Imputação e transformação dos dados {-}
+
+Feito o processo de análise exploratória, o proximo passo será imputar e transformar
+o conjunto de dados de treino para então usá-lo para escolher o modelo. 
+
+O processo de imputação consiste em preencher valores ausentes em um conjunto de dados. 
+Geralmente é utilizado medidas de tendência central como média e mediana para 
+valores numéricos e a moda para valores categóricos. Uma possível alternativa 
+seria também usar um modelo de aprendizado de máquina para preencher os valores, 
+como por exemplo o método de vizinhos mais próximos.
+
+Na etapa de transformação, realizamos processos de conversão de variáveis categóricas
+para numéricas, como por exemplo o *one-hot-encodidng*. Ele produz colunas binárias
+para cada categoria em uma coluna e adiciona o valor $1$ caso cada instância possua
+a categoria da coluna binária. Outros dois processos que são amplamente utilizados
+são a normalização e a padronização. A normalização deixa os valores das colunas
+situados entre o intevalo de $0$ a $1$, já a padronização redimenciona os valores
+para terem média $0$ e variancia $1$.
+
+```{r fig.cap = "Transformação de variáveis categóricas",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/dummy.png"))
+```
+
+## Comparação de modelos {-}
+
+Feito todo o processo de imputação e transoformação, chega a hora de escolher o
+modelo de aprendizado de máquina. Essa etapa pode ser realizada refazendo a técnica
+de *holdout* dividindo os dados de treino em dois: treino e validação. Geralmente
+é feita outra técnica denominada validação cruzada. Nela dividimos os dados em
+$K$ pacotes também chamados de *folds* e em cada iteração, um pacote será utilizado
+para teste e o resto para treino. Esse método é mais vantajoso que a técnica de 
+*hodout*, pois usa todo o conjunto de dados de treino, invés de separa-lo em dois,
+porém é muito custoso em termos computacionais.
+
+```{r fig.cap = "Validação cruzada",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/validacao_cruzada.png"))
+```
+
+Cada modelo será avalidado de acordo com as métricas pré-estabelecidas no início
+e será escolhido o modelo que tiver melhor performance tanto nas métricas como 
+também na velocidade de treino.
+
+## Aprimoramento do modelo {-}
+
+Escolhido o modelo, o próximo passo será aprimora-lo escolhendo os melhores valores
+de seues hiperparâmetros. Um hiperparâmetro não é estimado, mas sim escolhido
+pelo usuário, portanto se fazem técnicas de busca desses parâmetros como o que
+é conhecido como pesquisa em grade ou *grid search*. A pesquisa em grade usa
+uma grade pré-estabelecida de valores de hiperparâmetros e busca os melhores
+baseando-se em sua métrica. Há também o *random search* que faz o mesmo processo,
+porém não utiliza todos os valores, aleatorizando o processo.
+
+## Teste final {-}
+
+Realizando todo o processo de aprimoramento, o passo final é testar na base
+de dados de teste. Antes de testar, deve-se realizar o processo de imputação e
+transformação dos dados antes utilizados no treinamento. Feito isso basta alimentar
+o modelo aprimorado com a base de teste e testa-lo. 
+
+Obtendo um desempemho satisfatório, o modelo está apto a realizar a tarefa que
+foi específicada na problemática da situação, como por exemplo subi-lo na nuvem,
+isto é coloca-lo *online* para outras pessoas utilizarem.
+
+
+
+
+

@@ -1,0 +1,155 @@
+# MÉTRICAS PARA AVALIAÇÃO {-}
+
+## Subajuste e Sobreajuste {-}
+
+O subajuste e sobreajuste são um dos principais conceitos que norteiam o campo
+do aprendizado de máquina. Estão ligados ao desempenho do modelo e sua capacidade 
+de generalização, dado um conjunto de dados. O sobreajutes ou também chamado de 
+variância, é a capacidade do algoritmo conseguir generalizar bem para novos conjuntos
+de dados, isso que significa que se tivermos um algoritmo que foi bem na etapa de
+treinamento, porém foi péssimo na etapa de teste, ele possui uma alta variância ou
+pode se dizer que ele se sobreajustou aos dados de treino. Já o subajuste, lida
+com a precisão do modelo. Caso um classificador não consiga um desempenho satisfatório
+no conjunto de dados de treino e no de teste, temos que ele está subajustado ou
+possui um alto viés.
+
+## Métricas para Classificação {-}
+
+### Matriz de Confusão {-}
+
+A matriz de confusão é uma métrica que cria uma matriz quadrada com um número $j$ de
+classes[@geron2017hands]. Em uma classificação binária,temos:
+
+
+```{r fig.cap = "Matriz de confusão (Moraes Batista and Chiavegatto Filho 2019)",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/matriz_confusao_2.png"))
+```
+
+
+- **Verdadeiros positivos:** Quando o algoritmo prediz corretamente a classe positiva.
+
+- **Verdadeiros negativos:** Quando o algoritmo prediz corretamente a classe negativa.
+
+- **Falsos positivos:** Quando o algoritmo prediz uma instância negativa como positiva.
+
+- **Falsos negativos:** Quando o algotitmo prediz uma instância positiva como negativa.
+
+Esses quatro conceitos serão utilizados como componentes para as próximas métrcias.
+
+### Acurácia {-}
+
+A acurácia é a medida mais comumente utilizada. Ela é basicamente a soma dos
+acertos do classificador dividido pelo total de instâncias:
+
+
+$$\begin{equation}
+Acurácia = \frac{VP + VN}{VP+FP + VN + FN}
+(\#eq:acuracia)
+\end{equation}$$
+
+É preciso muito cuidado quando se utilizar essa métrica, pois torna-se bastante
+enviesada quando o conjunto de dados está com classes desbalanceadas.
+
+
+### *Precision*(Precisão) {-}
+
+*Precision*(Precisão), também chamada de acurácia das predições positivas, é a razão entre 
+os verdadeiros positivos com a soma dos verdadeiros positivos e os falsos positivos[@geron2017hands]:
+
+$$\begin{equation}
+Precison = \frac{VP}{VP+FP}
+(\#eq:precision)
+\end{equation}$$
+
+Pela natureza da equação, valores muito baixos indicam que há uma grande presença
+de falsos positivos que o modelo classificou errado.
+
+### *Recall*(Revocação) {-}
+
+*Recall*(Revocação) ou taxa de verdadeiros positivos, trata-se da proporção de 
+elementos positivos que são corretamente identificadas pelo modelo[@geron2017hands]:
+
+
+$$\begin{equation}
+Recall = \frac{VP}{VP+FN}
+(\#eq:recall)
+\end{equation}$$
+
+Essa métrica é mais sensível aos falsos negativos, isso significa que valores
+baixos indicam uma alta presença de falsos negativos que o modelo classificou
+errôneamente.
+
+### F1 *score*(Pontuação F1) {-}
+
+F1 *score* é a média harmônica das métricas precisão com a revocação. Ela é uma
+medida alternativa que serve para resumir as duas métricas[@geron2017hands]:
+
+$$\begin{equation}
+F1 = 2 . \frac{Precision . Recall}{Precision + Recall}
+(\#eq:f1)
+\end{equation}$$
+
+Valores baixos nessa métrica indicam que o modelo não esta com um desempenho satisfatório.
+
+### Curva *ROC* {-}
+
+A curva *ROC* ou curva característica de operação(*receiver operating characteristic*) é um gráfico
+usado em classificações binárias, onde o eixo $x$ representam a taxa de falsos positivos e o
+eixo $y$ representam a taxa de verdadeiros positivos ou revocação [@geron2017hands]. Quanto maior a curva,
+melhor o classificador. Uma forma mais utilizada é computar a área sob a curva.
+
+```{r fig.cap = "Curva ROC (Géron 2017)",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/roc_3.png"))
+```
+
+
+### Curva de calibração {-}
+
+A curva de calibração é um gráfico que mostra o agrupamento das predições em forma
+de probabilidade no eixo $x$ e a frequência do evento nos agrupamentos no eixo
+$y$ [@de2019machine]. Para um modelo ser perfeitamente calibrado, deve conter a mesma probabilidade
+tanto no eixo horizontal quanto no eixo vertical. Valores anômalos com probabilidade
+alta ou baixa define um modelo mal calibrado.
+
+```{r fig.cap = "Curva de calibração (Moraes Batista and Chiavegatto Filho 2019)",fig.align = 'center',echo = FALSE}
+knitr::include_graphics(rep("figuras/calibracao_2.png"))
+```
+
+
+
+## Métricas para Regressão {-}
+
+Diferentemente das métricas de classificação, as de regressão visam diminuir
+o valor e não aumentar. Quando menor for o valor de uma métrica de regressão
+ou função de custo, melhor é o modelo.
+
+### *MSE*(Erro quadrático Médio) {-}
+
+O *MSE* é uma das funções de custo mais famosas e utilizadas no campo da regressão.
+É o somatório da diferença ao quadrado do rótulo verdadeiro e o rótulo predito dividido
+pelo total de amostras:
+
+$$\begin{equation}
+MSE = \frac{1}{n}\sum_{i}^{n}(y_{i} - ŷ_{i})^{2})
+(\#eq:MSE)
+\end{equation}$$
+
+### *RMSE*(Raiz Quadrada do Erro Quadrático Médio) {-}
+
+A métrica *RMSE* constitui-se da raiz do erro quadrático médio. Diferente do *MSE*,
+o *RMSE* é mais atenta a anomalias:
+
+$$\begin{equation}
+RMSE = \sqrt{ \frac{1}{n}\sum_{i}^{n}(y_{i} - ŷ_{i})^{2}}
+(\#eq:RMSE)
+\end{equation}$$
+
+### *MAE*(Erro médio absoluto) {-}
+
+O erro médio absoluto trata-se da média do modulo da diferença entre o valor real
+e o valor predito:
+
+$$\begin{equation}
+MAE = \frac{1}{n}\sum_{i}^{n}|y_{i} - ŷ_{i}|
+(\#eq:MAE)
+\end{equation}$$
