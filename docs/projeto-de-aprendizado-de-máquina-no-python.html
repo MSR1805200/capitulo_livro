@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Projeto de Aprendizado de Máquina no python | CAPITULO 1 - APRENDIZADO DE MÁQUINA</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Projeto de Aprendizado de Máquina no python | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Projeto de Aprendizado de Máquina no python | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Mateus Silva Rocha" />
+
+
+<meta name="date" content="2022-06-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="métricas-para-avaliação.html"/>
+<link rel="next" href="projeto-de-aprendizado-de-máquina-no-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>INTRODUÇÃO</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html"><i class="fa fa-check"></i>PRINCIPAIS PARADIGMAS DE APRENDIZADO</a>
+<ul>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#supervisionado"><i class="fa fa-check"></i>Supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#não-supervisionado"><i class="fa fa-check"></i>Não supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#aprendizado-por-reforço"><i class="fa fa-check"></i>Aprendizado por reforço</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><i class="fa fa-check"></i>PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA</a>
+<ul>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#entendimento-do-problema-e-coleta-de-dados"><i class="fa fa-check"></i>Entendimento do problema e coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#divisão-do-conjunto-de-dados"><i class="fa fa-check"></i>Divisão do conjunto de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#análise-exploratória"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#imputação-e-transformação-dos-dados"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#comparação-de-modelos"><i class="fa fa-check"></i>Comparação de modelos</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#aprimoramento-do-modelo"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#teste-final"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html"><i class="fa fa-check"></i>ALGORITMOS PREDITIVOS</a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#k-vizinhos-mais-próximos"><i class="fa fa-check"></i>K-vizinhos mais próximos</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#árvore-de-decisão"><i class="fa fa-check"></i>Árvore de decisão</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#suport-vector-machinemáquinas-de-vetores-de-suporte"><i class="fa fa-check"></i><em>Suport Vector Machine</em>(Máquinas de vetores de suporte)</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-logística"><i class="fa fa-check"></i>Regressão Logística</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#naive-bayes"><i class="fa fa-check"></i><em>Naive Bayes</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#modelos-ensemble"><i class="fa fa-check"></i>Modelos <em>Ensemble</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#random-forest"><i class="fa fa-check"></i><em>Random Forest</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#adaboost"><i class="fa fa-check"></i><em>AdaBoost</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#gradient-boost"><i class="fa fa-check"></i><em>Gradient Boost</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html"><i class="fa fa-check"></i>MÉTRICAS PARA AVALIAÇÃO</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#subajuste-e-sobreajuste"><i class="fa fa-check"></i>Subajuste e Sobreajuste</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-classificação"><i class="fa fa-check"></i>Métricas para Classificação</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#matriz-de-confusão"><i class="fa fa-check"></i>Matriz de Confusão</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#acurácia"><i class="fa fa-check"></i>Acurácia</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#precisionprecisão"><i class="fa fa-check"></i><em>Precision</em>(Precisão)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#recallrevocação"><i class="fa fa-check"></i><em>Recall</em>(Revocação)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#f1-scorepontuação-f1"><i class="fa fa-check"></i>F1 <em>score</em>(Pontuação F1)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-roc"><i class="fa fa-check"></i>Curva <em>ROC</em></a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-de-calibração"><i class="fa fa-check"></i>Curva de calibração</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-regressão"><i class="fa fa-check"></i>Métricas para Regressão</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#mseerro-quadrático-médio"><i class="fa fa-check"></i><em>MSE</em>(Erro quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#rmseraiz-quadrada-do-erro-quadrático-médio"><i class="fa fa-check"></i><em>RMSE</em>(Raiz Quadrada do Erro Quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#maeerro-médio-absoluto"><i class="fa fa-check"></i><em>MAE</em>(Erro médio absoluto)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no <em>python</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#entendimento-do-problema"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#bibliotecas-utilizadas"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#coleta-de-dados"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#divisão-dos-dados"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#análise-exploratória-1"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#imputação-e-transformação-dos-dados-1"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#comparação-entre-modelos"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#aprimoramento-do-modelo-1"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#teste-final-1"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no R</a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#entendimento-do-problema-1"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#bibliotecas-utilizadas-1"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#coleta-de-dados-1"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#divisão-dos-dados-1"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#análise-exploratória-2"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#imputação-e-transformação-dos-dados-2"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#comparação-entre-modelos-1"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#aprimoramento-do-modelo-2"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#teste-final-2"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAPITULO 1 - APRENDIZADO DE MÁQUINA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="projeto-de-aprendizado-de-máquina-no-python" class="section level1 unnumbered hasAnchor">
+<h1>Projeto de Aprendizado de Máquina no <em>python</em><a href="projeto-de-aprendizado-de-máquina-no-python.html#projeto-de-aprendizado-de-máquina-no-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="entendimento-do-problema" class="section level2 unnumbered hasAnchor">
+<h2>Entendimento do problema<a href="projeto-de-aprendizado-de-máquina-no-python.html#entendimento-do-problema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para a realização do projeto de aprendizado de máquina no <em>python</em>, foi utilizado a base
+de dados de pinguins do árquipélago de Palmer na antártida. O objetivo principal
+será criar um modelo de aprendizado de máquina capaz de classificar o sexo
+dos pinguins. A base de dados possui as seguintes colunas:</p>
+<ul>
+<li><em>species:</em> Espécie do pinguim;</li>
+<li><em>island:</em> Ilha onde foi registrado o pinguim;</li>
+<li><em>bill length(mm):</em> Comprimento do bico em milímetros;</li>
+<li><em>bill depth(mm):</em> Profundidade do bico em milímetros;</li>
+<li><em>flipper length(mm):</em> Comprimento da nadadeira;</li>
+<li><em>body mass (g):</em> Massa corporal em gramas;</li>
+<li><em>sex:</em> Sexo do pinguim;</li>
+<li><em>year:</em> Ano de registro do pinguim;</li>
+<li><em>rowid</em>: identificador.</li>
+</ul>
+</div>
+<div id="bibliotecas-utilizadas" class="section level2 unnumbered hasAnchor">
+<h2>Bibliotecas utilizadas<a href="projeto-de-aprendizado-de-máquina-no-python.html#bibliotecas-utilizadas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As seguintes bibliotecas serão usadas para manipulação e implementação do modelo
+de aprendizado de máquina:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-13">Table 1: </span>Descrição dos pacotes</caption>
+<colgroup>
+<col width="12%" />
+<col width="87%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Pacotes</th>
+<th align="left">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">pandas</td>
+<td align="left">Pacote para análise e manipulação dos dados</td>
+</tr>
+<tr class="even">
+<td align="left">scikit-learn</td>
+<td align="left">pacote para transformação, imputação, implementação, treinamento e validação de modelos</td>
+</tr>
+<tr class="odd">
+<td align="left">plotly</td>
+<td align="left">Visualização de dados</td>
+</tr>
+</tbody>
+</table>
+<p>A implementação das práticas podem ser feitas utilizando-se do próprio computador
+ou em ferramentas na nuvem. Um exemplo seria o <em>google colab</em> oferecido pela empresa
+<em>google</em>. Para realizar o download na máquina, deve-se utilizar os seguintes comandos
+no Terminal:</p>
+<blockquote>
+<p>pip install -U scikit-learn</p>
+</blockquote>
+<blockquote>
+<p>pip install pandas</p>
+</blockquote>
+<blockquote>
+<p>pip install plotly</p>
+</blockquote>
+</div>
+<div id="coleta-de-dados" class="section level2 unnumbered hasAnchor">
+<h2>Coleta de dados<a href="projeto-de-aprendizado-de-máquina-no-python.html#coleta-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A coleta de dados foi feita no repositório no <a href="https://gist.github.com/slopp/ce3b90b9168f2f921784de84fa445651"><em>github</em></a>, onde é possível
+baixar em um arquivo .csv:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd <span class="co"># biblioteca pandas</span></span>
+<span id="cb1-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;penguins.csv&#39;</span>) <span class="co"># comando para ler a base de dados</span></span>
+<span id="cb1-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop([<span class="st">&#39;rowid&#39;</span>], axis <span class="op">=</span> <span class="dv">1</span>) <span class="co"># retirar a coluna de ids</span></span></code></pre></div>
+</div>
+<div id="divisão-dos-dados" class="section level2 unnumbered hasAnchor">
+<h2>Divisão dos dados<a href="projeto-de-aprendizado-de-máquina-no-python.html#divisão-dos-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos criar uma análise básica preliminar pra observar se há valores nulos na
+nossa variável alvo:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb2-1" aria-hidden="true" tabindex="-1"></a>df.isnull().<span class="bu">sum</span>() <span class="co"># mostrar os valores nulos por coluna</span></span></code></pre></div>
+<pre><code>## species               0
+## island                0
+## bill_length_mm        2
+## bill_depth_mm         2
+## flipper_length_mm     2
+## body_mass_g           2
+## sex                  11
+## year                  0
+## dtype: int64</code></pre>
+<p>Observe que há valores nulos. Como estão em nossa coluna alvo, serão excluídos. Depois é feita a conversão
+para valores numéricos.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">&#39;sex&#39;</span>].notnull()] <span class="co"># tirar apenas as linhas que possuem a coluna alvo nula</span></span>
+<span id="cb4-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb4-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;sex&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;sex&#39;</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x : <span class="dv">1</span> <span class="cf">if</span>(x <span class="op">==</span> <span class="st">&#39;male&#39;</span>) <span class="cf">else</span> <span class="dv">0</span> ) <span class="co"># transformar em atributos numéricos</span></span></code></pre></div>
+<p>a função <em>apply</em> serve para aplicar alguma função em uma determinada coluna, já a função <em>lambda</em>
+é um tipo de função que não é preciso declarar antes para se utilizar.</p>
+<p>Agora vamos dividir os dados em treino e teste. O treino
+será utilizado para não só observar o comportamento da base, mas também para
+imputação e treinamento do modelo:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb5-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb5-3" aria-hidden="true" tabindex="-1"></a>df_treino, df_teste <span class="op">=</span> train_test_split(df, stratify <span class="op">=</span> df[<span class="st">&#39;sex&#39;</span>]) <span class="co"># o parâmetro stratify é utilizado para preservar a proporção das classes</span></span></code></pre></div>
+</div>
+<div id="análise-exploratória-1" class="section level2 unnumbered hasAnchor">
+<h2>Análise exploratória<a href="projeto-de-aprendizado-de-máquina-no-python.html#análise-exploratória-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Agora vamos observar o comportamento das colunas da base de dados.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb6-1" aria-hidden="true" tabindex="-1"></a>df_treino.describe() <span class="co"># vai te dá um resumo descritivo das colunas</span></span></code></pre></div>
+<pre><code>##        bill_length_mm  bill_depth_mm  ...         sex         year
+## count      249.000000     249.000000  ...  249.000000   249.000000
+## mean        44.050201      17.111647  ...    0.506024  2008.028112
+## std          5.417252       1.927785  ...    0.500971     0.795155
+## min         33.100000      13.100000  ...    0.000000  2007.000000
+## 25%         39.500000      15.600000  ...    0.000000  2007.000000
+## 50%         45.000000      17.300000  ...    1.000000  2008.000000
+## 75%         48.500000      18.600000  ...    1.000000  2009.000000
+## max         59.600000      21.500000  ...    1.000000  2009.000000
+## 
+## [8 rows x 6 columns]</code></pre>
+<p>Algumas colunas parecem está simétricas em torno da média. Vamos observar algumas
+instâncias:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb8-1" aria-hidden="true" tabindex="-1"></a>df_treino.head() <span class="co"># Vai te dá as primeiras linhas da base de dados</span></span></code></pre></div>
+<pre><code>##        species  island  bill_length_mm  ...  body_mass_g  sex  year
+## 20      Adelie  Biscoe            37.8  ...       3400.0    0  2007
+## 266     Gentoo  Biscoe            46.2  ...       4375.0    0  2009
+## 333  Chinstrap   Dream            49.3  ...       4050.0    1  2009
+## 323  Chinstrap   Dream            49.0  ...       4300.0    1  2009
+## 94      Adelie   Dream            36.2  ...       3300.0    0  2008
+## 
+## [5 rows x 8 columns]</code></pre>
+<p>Agora vamos criar alguns gráficos para as colunas.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb10-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb10-3" aria-hidden="true" tabindex="-1"></a>px.bar(df_treino[<span class="st">&#39;species&#39;</span>].value_counts().sort_values(ascending <span class="op">=</span> <span class="va">False</span>),</span>
+<span id="cb10-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb10-4" aria-hidden="true" tabindex="-1"></a>      color <span class="op">=</span> df_treino[<span class="st">&#39;species&#39;</span>].value_counts().sort_values(ascending <span class="op">=</span> <span class="va">False</span>).index,</span>
+<span id="cb10-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb10-5" aria-hidden="true" tabindex="-1"></a>      labels<span class="op">=</span> { <span class="st">&#39;index&#39;</span> : <span class="st">&#39;espécies&#39;</span>, <span class="st">&#39;value&#39;</span> : <span class="st">&#39;quantidade&#39;</span>, <span class="st">&#39;color&#39;</span>:<span class="st">&#39;espécie&#39;</span>}</span>
+<span id="cb10-6"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div>
+        
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="29942868-47ca-47dd-9c43-fefb0dfb2f78" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+            <script type="text/javascript">
+                
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("29942868-47ca-47dd-9c43-fefb0dfb2f78")) {
+                    Plotly.newPlot(
+                        '29942868-47ca-47dd-9c43-fefb0dfb2f78',
+                        [{"alignmentgroup": "True", "hovertemplate": "esp\u00e9cie=Adelie<br>esp\u00e9cies=%{x}<br>quantidade=%{y}<extra></extra>", "legendgroup": "Adelie", "marker": {"color": "#636efa"}, "name": "Adelie", "offsetgroup": "Adelie", "orientation": "v", "showlegend": true, "textposition": "auto", "type": "bar", "x": ["Adelie"], "xaxis": "x", "y": [106], "yaxis": "y"}, {"alignmentgroup": "True", "hovertemplate": "esp\u00e9cie=Gentoo<br>esp\u00e9cies=%{x}<br>quantidade=%{y}<extra></extra>", "legendgroup": "Gentoo", "marker": {"color": "#EF553B"}, "name": "Gentoo", "offsetgroup": "Gentoo", "orientation": "v", "showlegend": true, "textposition": "auto", "type": "bar", "x": ["Gentoo"], "xaxis": "x", "y": [89], "yaxis": "y"}, {"alignmentgroup": "True", "hovertemplate": "esp\u00e9cie=Chinstrap<br>esp\u00e9cies=%{x}<br>quantidade=%{y}<extra></extra>", "legendgroup": "Chinstrap", "marker": {"color": "#00cc96"}, "name": "Chinstrap", "offsetgroup": "Chinstrap", "orientation": "v", "showlegend": true, "textposition": "auto", "type": "bar", "x": ["Chinstrap"], "xaxis": "x", "y": [54], "yaxis": "y"}],
+                        {"barmode": "relative", "legend": {"title": {"text": "esp\u00e9cie"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "esp\u00e9cies"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "quantidade"}}},
+                        {"responsive": true}
+                    )
+                };
+                
+            </script>
+        </div>
+<p>Acima temos os seguintes comandos que compôem a criação do gráfico de barras:</p>
+<ul>
+<li><em>value_counts()</em>: Mostra a frequência de cada categoria da coluna;</li>
+<li><em>sort_values(ascending = False)</em>: Ordena os valores do maior para o menor;</li>
+</ul>
+<p>Observe que temos espécimes desbalanceados. Vamos observar alguns histogramas.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb11-1" aria-hidden="true" tabindex="-1"></a>px.histogram(df_treino[<span class="st">&#39;bill_length_mm&#39;</span>], labels <span class="op">=</span> {<span class="st">&#39;value&#39;</span>:<span class="st">&#39;Comprimento do bico(mm)&#39;</span>, <span class="st">&#39;count&#39;</span>:<span class="st">&#39;Frequência&#39;</span>, <span class="st">&#39;variable&#39;</span> :<span class="st">&#39;Comprimento do bico(mm)&#39;</span>})</span></code></pre></div>
+<div>
+        
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="f0eae3cd-ec1e-4bcd-9f50-fd8877486114" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+            <script type="text/javascript">
+                
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("f0eae3cd-ec1e-4bcd-9f50-fd8877486114")) {
+                    Plotly.newPlot(
+                        'f0eae3cd-ec1e-4bcd-9f50-fd8877486114',
+                        [{"alignmentgroup": "True", "bingroup": "x", "hovertemplate": "Comprimento do bico(mm)=%{x}<br>count=%{y}<extra></extra>", "legendgroup": "bill_length_mm", "marker": {"color": "#636efa"}, "name": "bill_length_mm", "offsetgroup": "bill_length_mm", "orientation": "v", "showlegend": true, "type": "histogram", "x": [37.8, 46.2, 49.3, 49.0, 36.2, 35.7, 37.7, 34.5, 49.6, 45.1, 37.5, 45.8, 45.2, 49.8, 50.9, 40.6, 48.4, 41.7, 50.0, 41.3, 50.2, 39.0, 45.8, 39.5, 38.1, 40.5, 50.0, 41.1, 42.0, 37.3, 37.2, 35.0, 47.6, 39.6, 39.1, 41.1, 42.9, 35.0, 42.5, 49.1, 36.0, 39.7, 39.0, 37.3, 35.5, 40.7, 46.5, 48.8, 50.4, 43.2, 40.2, 53.4, 52.8, 40.3, 35.1, 49.5, 41.4, 42.3, 46.6, 38.3, 42.2, 45.9, 35.5, 46.2, 49.7, 36.6, 43.4, 50.8, 37.9, 39.7, 46.4, 37.6, 40.8, 38.2, 45.7, 41.1, 48.5, 39.2, 59.6, 48.1, 42.8, 50.1, 46.5, 46.5, 49.6, 37.8, 46.3, 45.7, 42.0, 42.7, 45.5, 43.2, 49.5, 50.2, 54.2, 50.7, 45.2, 41.1, 39.7, 46.8, 49.8, 46.9, 51.1, 49.0, 37.6, 42.9, 46.5, 37.7, 46.8, 50.0, 47.7, 45.7, 50.5, 38.1, 38.1, 48.7, 38.6, 40.8, 45.1, 50.1, 43.3, 45.5, 44.5, 34.4, 45.5, 46.4, 41.0, 48.5, 43.3, 39.8, 51.5, 48.1, 38.8, 47.2, 45.2, 42.8, 45.8, 50.5, 39.6, 52.0, 47.6, 40.2, 50.0, 37.7, 50.5, 39.6, 45.0, 39.6, 45.2, 40.6, 45.3, 49.6, 55.9, 44.1, 36.9, 51.3, 42.1, 52.2, 58.0, 47.3, 52.5, 48.2, 38.2, 36.5, 50.8, 44.9, 38.9, 44.4, 34.6, 39.3, 42.5, 43.2, 51.3, 50.7, 46.6, 40.9, 49.5, 40.6, 46.9, 48.7, 36.3, 38.1, 37.6, 35.9, 47.4, 47.2, 51.4, 38.6, 33.1, 46.2, 46.5, 36.2, 49.2, 51.0, 37.0, 47.5, 49.0, 47.5, 40.9, 41.6, 39.7, 43.6, 40.9, 46.1, 49.9, 43.2, 36.4, 48.2, 43.1, 39.2, 43.5, 46.0, 49.4, 37.9, 45.5, 46.7, 34.6, 43.5, 46.0, 42.7, 46.8, 36.5, 46.4, 36.0, 46.7, 52.0, 41.8, 46.2, 49.1, 38.8, 37.8, 51.3, 51.7, 52.7, 35.7, 54.3, 46.4, 52.2, 49.8, 41.1, 51.9, 35.9, 36.0, 37.3, 47.5, 33.5, 50.6, 45.1, 38.7], "xaxis": "x", "yaxis": "y"}],
+                        {"barmode": "relative", "legend": {"title": {"text": "Comprimento do bico(mm)"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "Comprimento do bico(mm)"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "count"}}},
+                        {"responsive": true}
+                    )
+                };
+                
+            </script>
+        </div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb12-1" aria-hidden="true" tabindex="-1"></a>px.histogram(df_treino[<span class="st">&#39;bill_depth_mm&#39;</span>], labels <span class="op">=</span> {<span class="st">&#39;value&#39;</span>:<span class="st">&#39;Profundidade do bico(mm)&#39;</span>, <span class="st">&#39;count&#39;</span>:<span class="st">&#39;Frequência&#39;</span>, <span class="st">&#39;variable&#39;</span> :<span class="st">&#39;Profundidade do bico(mm)&#39;</span>})</span></code></pre></div>
+<div>
+        
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="ef24aecf-79ed-4f54-bc8a-7d83e0e65fee" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+            <script type="text/javascript">
+                
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("ef24aecf-79ed-4f54-bc8a-7d83e0e65fee")) {
+                    Plotly.newPlot(
+                        'ef24aecf-79ed-4f54-bc8a-7d83e0e65fee',
+                        [{"alignmentgroup": "True", "bingroup": "x", "hovertemplate": "Profundidade do bico(mm)=%{x}<br>count=%{y}<extra></extra>", "legendgroup": "bill_depth_mm", "marker": {"color": "#636efa"}, "name": "bill_depth_mm", "offsetgroup": "bill_depth_mm", "orientation": "v", "showlegend": true, "type": "histogram", "x": [18.3, 14.1, 19.9, 19.6, 17.3, 16.9, 16.0, 18.1, 16.0, 14.4, 18.5, 14.6, 16.4, 15.9, 17.9, 18.6, 16.3, 14.7, 15.9, 20.3, 18.8, 17.1, 18.9, 17.8, 17.0, 17.9, 15.3, 18.6, 13.5, 20.5, 19.4, 17.9, 18.3, 18.8, 18.7, 18.2, 13.1, 17.9, 17.3, 15.0, 17.8, 18.9, 18.7, 17.8, 17.5, 17.0, 14.4, 16.2, 15.3, 19.0, 17.1, 15.8, 20.0, 18.0, 19.4, 16.2, 18.6, 21.2, 14.2, 19.2, 18.5, 17.1, 16.2, 14.9, 18.6, 17.8, 14.4, 18.5, 18.6, 18.4, 15.6, 19.3, 18.4, 18.1, 13.9, 19.0, 17.5, 18.6, 17.0, 16.4, 18.5, 15.0, 14.5, 17.9, 18.2, 18.1, 15.8, 17.0, 19.5, 13.7, 17.0, 16.6, 16.1, 14.3, 20.8, 15.0, 15.8, 17.5, 17.7, 16.5, 17.3, 16.6, 16.5, 19.5, 17.0, 17.6, 13.5, 19.8, 15.4, 16.3, 15.0, 17.3, 18.4, 18.6, 17.6, 14.1, 17.2, 18.9, 14.5, 17.9, 13.4, 13.9, 14.7, 18.4, 13.7, 17.8, 20.0, 15.0, 14.0, 19.1, 18.7, 15.1, 17.2, 13.7, 16.6, 14.2, 14.2, 15.9, 17.2, 18.1, 14.5, 17.0, 19.5, 18.7, 15.9, 17.7, 15.4, 18.1, 17.8, 18.8, 13.7, 15.0, 17.0, 19.7, 18.6, 14.2, 19.1, 18.8, 17.8, 15.3, 15.6, 15.6, 20.0, 16.6, 19.0, 13.8, 18.8, 17.3, 17.2, 20.6, 16.7, 14.5, 19.2, 19.7, 17.8, 13.7, 19.0, 17.2, 14.6, 15.7, 19.5, 16.5, 19.1, 16.6, 14.6, 15.5, 19.0, 17.0, 16.1, 14.5, 14.8, 16.1, 18.2, 18.8, 16.9, 14.2, 16.1, 16.8, 16.6, 18.0, 17.9, 13.9, 16.8, 13.2, 16.1, 18.5, 17.1, 14.3, 19.2, 19.6, 15.2, 18.9, 15.8, 18.6, 15.0, 15.3, 21.1, 14.2, 21.5, 18.3, 14.3, 18.0, 15.0, 18.5, 17.9, 19.0, 19.4, 17.5, 14.5, 20.0, 20.0, 18.2, 20.3, 19.8, 17.0, 15.7, 18.6, 17.1, 16.8, 19.1, 19.5, 19.2, 17.9, 16.8, 14.0, 19.0, 19.4, 14.5, 19.0], "xaxis": "x", "yaxis": "y"}],
+                        {"barmode": "relative", "legend": {"title": {"text": "Profundidade do bico(mm)"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "Profundidade do bico(mm)"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "count"}}},
+                        {"responsive": true}
+                    )
+                };
+                
+            </script>
+        </div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb13-1" aria-hidden="true" tabindex="-1"></a>px.histogram(df_treino[<span class="st">&#39;flipper_length_mm&#39;</span>], labels <span class="op">=</span> {<span class="st">&#39;value&#39;</span>:<span class="st">&#39;Comprimento da nadadeira(mm)&#39;</span>, <span class="st">&#39;count&#39;</span>:<span class="st">&#39;Frequência&#39;</span>, <span class="st">&#39;variable&#39;</span> :<span class="st">&#39;Comprimento da nadadeira(mm)&#39;</span>})</span></code></pre></div>
+<div>
+        
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="3e2e163e-0272-4704-a275-e6ae4894c446" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+            <script type="text/javascript">
+                
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("3e2e163e-0272-4704-a275-e6ae4894c446")) {
+                    Plotly.newPlot(
+                        '3e2e163e-0272-4704-a275-e6ae4894c446',
+                        [{"alignmentgroup": "True", "bingroup": "x", "hovertemplate": "Comprimento da nadadeira(mm)=%{x}<br>count=%{y}<extra></extra>", "legendgroup": "flipper_length_mm", "marker": {"color": "#636efa"}, "name": "flipper_length_mm", "offsetgroup": "flipper_length_mm", "orientation": "v", "showlegend": true, "type": "histogram", "x": [174.0, 217.0, 203.0, 212.0, 187.0, 185.0, 183.0, 187.0, 225.0, 210.0, 199.0, 210.0, 223.0, 229.0, 196.0, 183.0, 220.0, 210.0, 224.0, 194.0, 202.0, 191.0, 197.0, 188.0, 181.0, 187.0, 220.0, 189.0, 210.0, 199.0, 184.0, 192.0, 195.0, 190.0, 181.0, 192.0, 215.0, 190.0, 187.0, 228.0, 195.0, 184.0, 185.0, 191.0, 190.0, 190.0, 217.0, 222.0, 224.0, 197.0, 193.0, 219.0, 205.0, 195.0, 193.0, 229.0, 191.0, 191.0, 210.0, 189.0, 180.0, 190.0, 195.0, 221.0, 195.0, 185.0, 218.0, 201.0, 193.0, 190.0, 221.0, 181.0, 195.0, 185.0, 214.0, 182.0, 191.0, 190.0, 230.0, 199.0, 195.0, 225.0, 213.0, 192.0, 193.0, 193.0, 215.0, 195.0, 200.0, 208.0, 196.0, 187.0, 224.0, 218.0, 201.0, 223.0, 215.0, 190.0, 193.0, 189.0, 198.0, 192.0, 225.0, 210.0, 185.0, 196.0, 210.0, 198.0, 215.0, 230.0, 216.0, 193.0, 200.0, 190.0, 187.0, 210.0, 199.0, 208.0, 215.0, 190.0, 209.0, 210.0, 214.0, 184.0, 214.0, 191.0, 203.0, 219.0, 208.0, 184.0, 187.0, 209.0, 180.0, 214.0, 191.0, 209.0, 219.0, 225.0, 196.0, 201.0, 215.0, 176.0, 196.0, 180.0, 222.0, 186.0, 220.0, 186.0, 198.0, 193.0, 210.0, 216.0, 228.0, 196.0, 189.0, 218.0, 195.0, 197.0, 181.0, 222.0, 221.0, 221.0, 190.0, 181.0, 210.0, 212.0, 190.0, 219.0, 189.0, 190.0, 187.0, 208.0, 193.0, 203.0, 193.0, 214.0, 200.0, 187.0, 222.0, 208.0, 190.0, 198.0, 194.0, 190.0, 212.0, 215.0, 201.0, 188.0, 178.0, 209.0, 217.0, 187.0, 195.0, 203.0, 185.0, 209.0, 216.0, 199.0, 187.0, 192.0, 193.0, 217.0, 191.0, 211.0, 213.0, 192.0, 184.0, 210.0, 197.0, 195.0, 213.0, 195.0, 216.0, 172.0, 220.0, 219.0, 198.0, 220.0, 194.0, 196.0, 215.0, 182.0, 216.0, 186.0, 195.0, 197.0, 198.0, 187.0, 212.0, 190.0, 190.0, 197.0, 194.0, 197.0, 189.0, 231.0, 190.0, 228.0, 230.0, 188.0, 206.0, 189.0, 190.0, 192.0, 212.0, 190.0, 193.0, 207.0, 195.0], "xaxis": "x", "yaxis": "y"}],
+                        {"barmode": "relative", "legend": {"title": {"text": "Comprimento da nadadeira(mm)"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "Comprimento da nadadeira(mm)"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "count"}}},
+                        {"responsive": true}
+                    )
+                };
+                
+            </script>
+        </div>
+<p>Vamos relacionar algumas variáveis para identificar algum padrão.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb14-1" aria-hidden="true" tabindex="-1"></a>px.scatter(df_treino[<span class="st">&#39;bill_depth_mm&#39;</span>], df_treino[<span class="st">&#39;flipper_length_mm&#39;</span>], </span>
+<span id="cb14-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb14-2" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> df_treino[<span class="st">&#39;species&#39;</span>], size <span class="op">=</span> df_treino[<span class="st">&#39;body_mass_g&#39;</span>], labels <span class="op">=</span> {<span class="st">&#39;x&#39;</span>:<span class="st">&#39;Profundidade do bico(mm)&#39;</span>, <span class="st">&#39;index&#39;</span>:<span class="st">&#39;Comprimento da nadadeira(mm)&#39;</span>, <span class="st">&#39;color&#39;</span> :<span class="st">&#39;Espécies&#39;</span>} )</span></code></pre></div>
+<div>
+        
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="988275e7-d509-4c2c-a4d3-051248f2d51a" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+            <script type="text/javascript">
+                
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("988275e7-d509-4c2c-a4d3-051248f2d51a")) {
+                    Plotly.newPlot(
+                        '988275e7-d509-4c2c-a4d3-051248f2d51a',
+                        [{"hovertemplate": "Esp\u00e9cies=Adelie<br>Profundidade do bico(mm)=%{x}<br>Comprimento da nadadeira(mm)=%{y}<br>size=%{marker.size}<extra></extra>", "legendgroup": "Adelie", "marker": {"color": "#636efa", "size": [3400.0, 3300.0, 3150.0, 3075.0, 2900.0, 4475.0, 3550.0, 3550.0, 3050.0, 4150.0, 3300.0, 3175.0, 3200.0, 3325.0, 3775.0, 3900.0, 3725.0, 4600.0, 3750.0, 4050.0, 3450.0, 3450.0, 3550.0, 3650.0, 3350.0, 3700.0, 3725.0, 4775.0, 3400.0, 3250.0, 4200.0, 3700.0, 4150.0, 3950.0, 3550.0, 3350.0, 3700.0, 2925.0, 3900.0, 3300.0, 3900.0, 3950.0, 3425.0, 4250.0, 4250.0, 3750.0, 4050.0, 3900.0, 3200.0, 3600.0, 4700.0, 3500.0, 3700.0, 3425.0, 3750.0, 4300.0, 3325.0, 4725.0, 4650.0, 3800.0, 3550.0, 3450.0, 3600.0, 3500.0, 4450.0, 3800.0, 4400.0, 3500.0, 4000.0, 3900.0, 2850.0, 3600.0, 3200.0, 3650.0, 3475.0, 3800.0, 3825.0, 3750.0, 3050.0, 2900.0, 2900.0, 3550.0, 3000.0, 3950.0, 4250.0, 3700.0, 4100.0, 2850.0, 3500.0, 4675.0, 3150.0, 4400.0, 4200.0, 4075.0, 3150.0, 3100.0, 4450.0, 3950.0, 4250.0, 3350.0, 4100.0, 3800.0, 3450.0, 3000.0, 3600.0, 3450.0], "sizemode": "area", "sizeref": 15.125, "symbol": "circle"}, "mode": "markers", "name": "Adelie", "orientation": "h", "showlegend": true, "type": "scatter", "x": [174.0, 187.0, 185.0, 183.0, 187.0, 199.0, 183.0, 194.0, 191.0, 197.0, 188.0, 181.0, 187.0, 189.0, 199.0, 184.0, 192.0, 190.0, 181.0, 192.0, 190.0, 195.0, 184.0, 185.0, 191.0, 190.0, 190.0, 197.0, 193.0, 195.0, 193.0, 191.0, 191.0, 189.0, 180.0, 195.0, 185.0, 193.0, 190.0, 181.0, 195.0, 185.0, 182.0, 190.0, 195.0, 193.0, 200.0, 190.0, 193.0, 185.0, 196.0, 198.0, 190.0, 187.0, 199.0, 208.0, 184.0, 203.0, 184.0, 180.0, 196.0, 176.0, 180.0, 186.0, 186.0, 193.0, 196.0, 189.0, 195.0, 190.0, 181.0, 190.0, 189.0, 190.0, 187.0, 190.0, 198.0, 194.0, 190.0, 188.0, 178.0, 187.0, 185.0, 192.0, 193.0, 191.0, 192.0, 184.0, 197.0, 195.0, 172.0, 198.0, 194.0, 196.0, 182.0, 186.0, 198.0, 190.0, 190.0, 189.0, 188.0, 189.0, 190.0, 192.0, 190.0, 195.0], "xaxis": "x", "y": [20, 94, 60, 102, 54, 133, 26, 85, 128, 73, 32, 108, 27, 119, 117, 77, 100, 45, 0, 63, 52, 148, 105, 145, 84, 74, 143, 109, 140, 2, 83, 55, 49, 88, 37, 66, 15, 104, 71, 38, 41, 23, 46, 146, 75, 149, 53, 135, 112, 62, 81, 121, 96, 134, 106, 95, 18, 101, 39, 24, 72, 122, 21, 50, 93, 57, 43, 87, 79, 107, 58, 89, 80, 5, 141, 86, 110, 59, 68, 116, 98, 78, 44, 65, 139, 76, 99, 64, 131, 7, 28, 14, 19, 115, 40, 42, 69, 36, 103, 118, 67, 22, 48, 144, 70, 16], "yaxis": "y"}, {"hovertemplate": "Esp\u00e9cies=Gentoo<br>Profundidade do bico(mm)=%{x}<br>Comprimento da nadadeira(mm)=%{y}<br>size=%{marker.size}<extra></extra>", "legendgroup": "Gentoo", "marker": {"color": "#EF553B", "size": [4375.0, 5700.0, 4400.0, 4200.0, 5950.0, 5950.0, 5400.0, 4700.0, 5350.0, 5550.0, 4150.0, 5000.0, 5500.0, 4900.0, 6000.0, 5550.0, 5500.0, 5800.0, 4850.0, 5300.0, 4600.0, 5000.0, 4400.0, 6050.0, 5000.0, 4400.0, 5050.0, 3950.0, 5650.0, 5700.0, 5550.0, 5300.0, 5250.0, 4550.0, 5150.0, 5700.0, 4750.0, 4450.0, 5000.0, 4400.0, 4200.0, 4850.0, 4650.0, 4850.0, 4575.0, 5500.0, 4925.0, 4700.0, 4700.0, 5400.0, 5400.0, 5550.0, 5050.0, 4300.0, 4750.0, 5600.0, 5300.0, 5250.0, 5450.0, 5100.0, 4750.0, 5250.0, 4450.0, 4650.0, 4875.0, 5350.0, 4725.0, 4975.0, 4800.0, 5200.0, 4600.0, 5550.0, 4900.0, 4500.0, 5400.0, 4600.0, 4650.0, 4925.0, 5000.0, 5200.0, 4700.0, 4850.0, 4700.0, 4625.0, 5650.0, 5400.0, 5700.0, 4875.0, 5050.0], "sizemode": "area", "sizeref": 15.125, "symbol": "circle"}, "mode": "markers", "name": "Gentoo", "orientation": "h", "showlegend": true, "type": "scatter", "x": [217.0, 225.0, 210.0, 210.0, 223.0, 229.0, 220.0, 210.0, 224.0, 220.0, 210.0, 215.0, 228.0, 217.0, 222.0, 224.0, 219.0, 229.0, 210.0, 221.0, 218.0, 221.0, 214.0, 230.0, 225.0, 213.0, 215.0, 208.0, 224.0, 218.0, 223.0, 215.0, 225.0, 210.0, 215.0, 230.0, 216.0, 210.0, 215.0, 209.0, 210.0, 214.0, 214.0, 219.0, 208.0, 209.0, 214.0, 209.0, 219.0, 225.0, 215.0, 222.0, 220.0, 210.0, 216.0, 228.0, 218.0, 222.0, 221.0, 221.0, 212.0, 219.0, 208.0, 214.0, 222.0, 208.0, 212.0, 215.0, 209.0, 217.0, 209.0, 216.0, 217.0, 211.0, 213.0, 210.0, 213.0, 216.0, 220.0, 219.0, 220.0, 215.0, 216.0, 212.0, 231.0, 228.0, 230.0, 212.0, 207.0], "xaxis": "x", "y": [266, 193, 204, 166, 231, 263, 187, 258, 235, 181, 168, 176, 255, 206, 269, 211, 259, 219, 202, 213, 238, 223, 214, 185, 205, 174, 175, 192, 245, 172, 221, 201, 251, 157, 161, 153, 222, 154, 173, 160, 198, 246, 164, 252, 260, 261, 270, 183, 216, 199, 156, 196, 207, 194, 195, 253, 239, 182, 233, 224, 236, 189, 210, 162, 249, 191, 234, 254, 170, 225, 228, 163, 197, 152, 275, 180, 264, 248, 209, 159, 220, 272, 226, 232, 215, 243, 217, 240, 184], "yaxis": "y"}, {"hovertemplate": "Esp\u00e9cies=Chinstrap<br>Profundidade do bico(mm)=%{x}<br>Comprimento da nadadeira(mm)=%{y}<br>size=%{marker.size}<extra></extra>", "legendgroup": "Chinstrap", "marker": {"color": "#00cc96", "size": [4050.0, 4300.0, 3675.0, 3800.0, 3850.0, 3350.0, 4550.0, 3575.0, 3600.0, 4450.0, 3400.0, 3325.0, 3500.0, 3775.0, 3650.0, 3500.0, 2900.0, 4300.0, 3650.0, 3675.0, 2700.0, 3950.0, 3600.0, 3400.0, 3400.0, 3700.0, 3250.0, 3250.0, 4050.0, 3900.0, 3950.0, 3450.0, 3700.0, 4100.0, 3350.0, 3650.0, 4050.0, 3800.0, 3800.0, 3950.0, 4400.0, 4100.0, 3900.0, 3200.0, 4150.0, 3300.0, 4150.0, 3650.0, 3750.0, 3775.0, 3725.0, 3450.0, 3950.0, 3800.0], "sizemode": "area", "sizeref": 15.125, "symbol": "circle"}, "mode": "markers", "name": "Chinstrap", "orientation": "h", "showlegend": true, "type": "scatter", "x": [203.0, 212.0, 196.0, 202.0, 195.0, 187.0, 205.0, 190.0, 195.0, 201.0, 191.0, 199.0, 192.0, 193.0, 195.0, 196.0, 187.0, 201.0, 189.0, 198.0, 192.0, 210.0, 193.0, 200.0, 190.0, 191.0, 187.0, 191.0, 201.0, 196.0, 198.0, 197.0, 181.0, 210.0, 187.0, 193.0, 203.0, 193.0, 200.0, 201.0, 195.0, 203.0, 199.0, 187.0, 195.0, 195.0, 197.0, 187.0, 197.0, 194.0, 197.0, 190.0, 206.0, 193.0], "xaxis": "x", "y": [333, 323, 320, 334, 312, 330, 305, 290, 310, 321, 297, 326, 276, 341, 338, 319, 298, 307, 337, 325, 314, 316, 328, 302, 322, 304, 324, 332, 289, 277, 281, 331, 293, 342, 308, 278, 329, 286, 303, 327, 295, 309, 311, 306, 284, 300, 301, 317, 283, 287, 280, 294, 336, 299], "yaxis": "y"}],
+                        {"legend": {"itemsizing": "constant", "title": {"text": "Esp\u00e9cies"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "Profundidade do bico(mm)"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "Comprimento da nadadeira(mm)"}}},
+                        {"responsive": true}
+                    )
+                };
+                
+            </script>
+        </div>
+<p>Observe que dependendo da profundidade do bico, há uma nitida diferença entre
+as espécies.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb15-1" aria-hidden="true" tabindex="-1"></a>px.scatter(df_treino[<span class="st">&#39;bill_length_mm&#39;</span>], df_treino[<span class="st">&#39;body_mass_g&#39;</span>] , </span>
+<span id="cb15-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb15-2" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> df_treino[<span class="st">&#39;sex&#39;</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">&#39;male&#39;</span> <span class="cf">if</span>(x <span class="op">==</span> <span class="dv">1</span>) <span class="cf">else</span> <span class="st">&#39;female&#39;</span>)  ,labels <span class="op">=</span> {<span class="st">&#39;x&#39;</span>:<span class="st">&#39;Profundidade do bico(mm)&#39;</span>, <span class="st">&#39;index&#39;</span>:<span class="st">&#39;Massa corporal(g)&#39;</span>, <span class="st">&#39;color&#39;</span> :<span class="st">&#39;Sexo&#39;</span>})</span></code></pre></div>
+<div>
+        
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="18ff626e-f06f-47da-80bb-f5e5e8007c7d" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+            <script type="text/javascript">
+                
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("18ff626e-f06f-47da-80bb-f5e5e8007c7d")) {
+                    Plotly.newPlot(
+                        '18ff626e-f06f-47da-80bb-f5e5e8007c7d',
+                        [{"hovertemplate": "Sexo=female<br>Profundidade do bico(mm)=%{x}<br>Massa corporal(g)=%{y}<extra></extra>", "legendgroup": "female", "marker": {"color": "#636efa", "symbol": "circle"}, "mode": "markers", "name": "female", "orientation": "h", "showlegend": true, "type": "scatter", "x": [3400.0, 4375.0, 3300.0, 3150.0, 3075.0, 2900.0, 4400.0, 4200.0, 3675.0, 4700.0, 3050.0, 3300.0, 3175.0, 3200.0, 4150.0, 3725.0, 3850.0, 5000.0, 3450.0, 3350.0, 3450.0, 3350.0, 3700.0, 4900.0, 3400.0, 3250.0, 4850.0, 3550.0, 3575.0, 3350.0, 3700.0, 4600.0, 2925.0, 3300.0, 4400.0, 3325.0, 4400.0, 3500.0, 3650.0, 3950.0, 3500.0, 2900.0, 3200.0, 3650.0, 3675.0, 2700.0, 3600.0, 4550.0, 4750.0, 3600.0, 3400.0, 3700.0, 3425.0, 4450.0, 3750.0, 5000.0, 3400.0, 4400.0, 4200.0, 4850.0, 3325.0, 4650.0, 3700.0, 4850.0, 4575.0, 4925.0, 3250.0, 4700.0, 4700.0, 3550.0, 3450.0, 3500.0, 3950.0, 4300.0, 3500.0, 3700.0, 2850.0, 4750.0, 3600.0, 3200.0, 3350.0, 4450.0, 3800.0, 4650.0, 4875.0, 3825.0, 3050.0, 4725.0, 4975.0, 2900.0, 2900.0, 4800.0, 5200.0, 3550.0, 3000.0, 4600.0, 3900.0, 3200.0, 4900.0, 3700.0, 4500.0, 2850.0, 4600.0, 4650.0, 4150.0, 3150.0, 4700.0, 4850.0, 3150.0, 4700.0, 3100.0, 3300.0, 3650.0, 4625.0, 3350.0, 3450.0, 3800.0, 3450.0, 3000.0, 4875.0, 3600.0, 5050.0, 3450.0], "xaxis": "x", "y": [20, 266, 94, 60, 102, 54, 204, 166, 320, 258, 128, 32, 108, 27, 168, 100, 312, 176, 52, 330, 148, 84, 74, 206, 140, 2, 202, 37, 290, 66, 15, 238, 104, 38, 214, 326, 174, 276, 338, 192, 319, 298, 112, 337, 325, 314, 62, 157, 222, 328, 302, 96, 134, 154, 106, 173, 322, 160, 198, 246, 18, 164, 304, 252, 260, 270, 332, 183, 216, 72, 122, 50, 281, 194, 87, 293, 58, 236, 89, 80, 308, 210, 286, 162, 249, 110, 68, 234, 254, 116, 98, 170, 225, 78, 44, 228, 311, 306, 197, 76, 152, 64, 180, 264, 284, 28, 220, 272, 40, 226, 42, 300, 317, 232, 118, 294, 22, 48, 144, 240, 70, 184, 16], "yaxis": "y"}, {"hovertemplate": "Sexo=male<br>Profundidade do bico(mm)=%{x}<br>Massa corporal(g)=%{y}<extra></extra>", "legendgroup": "male", "marker": {"color": "#EF553B", "symbol": "circle"}, "mode": "markers", "name": "male", "orientation": "h", "showlegend": true, "type": "scatter", "x": [4050.0, 4300.0, 5700.0, 4475.0, 5950.0, 5950.0, 3550.0, 5400.0, 5350.0, 3550.0, 3800.0, 4150.0, 5550.0, 3325.0, 3775.0, 3900.0, 4600.0, 3750.0, 4050.0, 5500.0, 3550.0, 3650.0, 3725.0, 6000.0, 5550.0, 4775.0, 5500.0, 4550.0, 4200.0, 5800.0, 3700.0, 4150.0, 3950.0, 5300.0, 3600.0, 4450.0, 3900.0, 5000.0, 3900.0, 3950.0, 3425.0, 3400.0, 4250.0, 6050.0, 4250.0, 5000.0, 3775.0, 3750.0, 5050.0, 4050.0, 5650.0, 5700.0, 4300.0, 5550.0, 5300.0, 3900.0, 5250.0, 3950.0, 4700.0, 3500.0, 5150.0, 5700.0, 4300.0, 4725.0, 4650.0, 3250.0, 5500.0, 3800.0, 5400.0, 4050.0, 5400.0, 3900.0, 3600.0, 5550.0, 5050.0, 4450.0, 3800.0, 4750.0, 5600.0, 4400.0, 5300.0, 4000.0, 3450.0, 5250.0, 5450.0, 5100.0, 3900.0, 4100.0, 5250.0, 3650.0, 3650.0, 4050.0, 3800.0, 3475.0, 5350.0, 3800.0, 3750.0, 3950.0, 4400.0, 4100.0, 5550.0, 3950.0, 4250.0, 5400.0, 4100.0, 3500.0, 4675.0, 4925.0, 5000.0, 5200.0, 4400.0, 4200.0, 4075.0, 4150.0, 4450.0, 3950.0, 4250.0, 3750.0, 3775.0, 3725.0, 5650.0, 5400.0, 5700.0, 4100.0, 3950.0, 3800.0], "xaxis": "x", "y": [333, 323, 193, 133, 231, 263, 26, 187, 235, 85, 334, 73, 181, 119, 117, 77, 45, 0, 63, 255, 105, 145, 143, 269, 211, 109, 259, 305, 83, 219, 55, 49, 88, 213, 310, 321, 71, 223, 41, 23, 46, 297, 146, 185, 75, 205, 341, 149, 175, 53, 245, 172, 307, 221, 201, 135, 251, 316, 81, 121, 161, 153, 95, 101, 39, 324, 261, 24, 199, 289, 156, 277, 21, 196, 207, 93, 57, 195, 253, 43, 239, 79, 331, 182, 233, 224, 107, 342, 189, 5, 278, 329, 303, 141, 191, 86, 59, 327, 295, 309, 163, 65, 139, 275, 99, 131, 7, 248, 209, 159, 14, 19, 115, 301, 69, 36, 103, 283, 287, 280, 215, 243, 217, 67, 336, 299], "yaxis": "y"}],
+                        {"legend": {"title": {"text": "Sexo"}, "tracegroupgap": 0}, "margin": {"t": 60}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "xaxis": {"anchor": "y", "domain": [0.0, 1.0], "title": {"text": "Profundidade do bico(mm)"}}, "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "Massa corporal(g)"}}},
+                        {"responsive": true}
+                    )
+                };
+                
+            </script>
+        </div>
+</div>
+<div id="imputação-e-transformação-dos-dados-1" class="section level2 unnumbered hasAnchor">
+<h2>Imputação e transformação dos dados<a href="projeto-de-aprendizado-de-máquina-no-python.html#imputação-e-transformação-dos-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Antes de alimentar qualquer modelo, deve-se tratar e transformar cada coluna
+da base de dados.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb16-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb16-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb16-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb16-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-6" aria-hidden="true" tabindex="-1"></a>pipe_num <span class="op">=</span> Pipeline([</span>
+<span id="cb16-7"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  (<span class="st">&#39;imputer_num&#39;</span>, SimpleImputer(strategy <span class="op">=</span> <span class="st">&#39;median&#39;</span>) ),</span>
+<span id="cb16-8"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-8" aria-hidden="true" tabindex="-1"></a>  (<span class="st">&#39;transform_num&#39;</span>, StandardScaler() )</span>
+<span id="cb16-9"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb16-10"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-11" aria-hidden="true" tabindex="-1"></a>pipe_cat <span class="op">=</span> Pipeline([</span>
+<span id="cb16-12"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-12" aria-hidden="true" tabindex="-1"></a>  (<span class="st">&#39;imputer_cat&#39;</span>, SimpleImputer(strategy <span class="op">=</span> <span class="st">&#39;most_frequent&#39;</span>) ),</span>
+<span id="cb16-13"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-13" aria-hidden="true" tabindex="-1"></a>  (<span class="st">&#39;transform_cat&#39;</span>, OneHotEncoder() )</span>
+<span id="cb16-14"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-14" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb16-15"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-16" aria-hidden="true" tabindex="-1"></a>transformador <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb16-17"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-17" aria-hidden="true" tabindex="-1"></a>  (<span class="st">&#39;numerico&#39;</span>, pipe_num, [<span class="st">&#39;bill_length_mm&#39;</span>, <span class="st">&#39;bill_depth_mm&#39;</span>,    <span class="st">&#39;flipper_length_mm&#39;</span>,    <span class="st">&#39;body_mass_g&#39;</span>, <span class="st">&#39;year&#39;</span>] ),</span>
+<span id="cb16-18"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-18" aria-hidden="true" tabindex="-1"></a>  (<span class="st">&#39;categorico&#39;</span>, pipe_cat, [<span class="st">&#39;species&#39;</span>,<span class="st">&#39;island&#39;</span>] )</span>
+<span id="cb16-19"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb16-19" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div>
+<p>Acima temos algumas funções que são utilizadas para o processo de imputação e transformação dos dados:</p>
+<p><strong>Pipeline</strong>: Container que armazenará as funções necessárias para imputação e transformação dos dados. Foi dividido em pipe_num para imputar e transformar os dados numéricos e pipe_cat para os dados categóricos.</p>
+<p>Sua sintaxe se dá: Pipeline([(‘nome_do_passo’, função())])</p>
+<p>Para os atributos numéricos, foram propostos a imputação pela mediana e a transformação pela <em>Z Score</em>, já para
+os categóricos foi pela mais frequente juntamente com a transformação <em>OneHotEncoder</em> que atribui colunas binárias
+a cada valor das colunas.</p>
+<p><strong>ColumnTransformer</strong>: Tem função semelhante com as <em>pipelines</em>, porém o objetivo é gerenciar quais colunas receberão as devidas imputações e transformações.</p>
+<p>Sua sintaxe se dá: ColumnTransformer([(‘nome_do_passo’, função(), [lista_de_atributos] )])</p>
+<p>Agora basta separar as variáveis preditoras e a coluna alvo para finalmente realizar a etapa de transformação e imputação dos dados.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb17-2" aria-hidden="true" tabindex="-1"></a>x_treino <span class="op">=</span> df_treino.drop([<span class="st">&#39;sex&#39;</span>], axis <span class="op">=</span> <span class="dv">1</span>) <span class="co"># armazenando as colunas preditoras</span></span>
+<span id="cb17-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb17-3" aria-hidden="true" tabindex="-1"></a>y_treino <span class="op">=</span> df_treino[<span class="st">&#39;sex&#39;</span>] <span class="co"># armazenando a coluna alvo</span></span>
+<span id="cb17-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb17-5" aria-hidden="true" tabindex="-1"></a>x_treino_preparado <span class="op">=</span> transformador.fit_transform(x_treino) <span class="co"># preparando as colunas preditoras</span></span></code></pre></div>
+<p>A função <em>fit_transform</em> tem como objetivo imputar e transformar os nossos dados, mas também
+armazenar os valores de imputação para que seja utilizada no teste.</p>
+</div>
+<div id="comparação-entre-modelos" class="section level2 unnumbered hasAnchor">
+<h2>Comparação entre modelos<a href="projeto-de-aprendizado-de-máquina-no-python.html#comparação-entre-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos utilizar alguns modelos para comparar:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_predict</span>
+<span id="cb18-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb18-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb18-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-6" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> cross_val_predict(RandomForestClassifier(), x_treino_preparado, y_treino, cv <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb18-7"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_treino,pred))</span></code></pre></div>
+<pre><code>##               precision    recall  f1-score   support
+## 
+##            0       0.93      0.90      0.92       123
+##            1       0.91      0.94      0.92       126
+## 
+##     accuracy                           0.92       249
+##    macro avg       0.92      0.92      0.92       249
+## weighted avg       0.92      0.92      0.92       249</code></pre>
+<p>Foi utilizado a técnica de validação cruzada com 5 pacotes(<em>folds</em>) e o classificador <em>Random Forest</em>. As principais métricas já antes explicadas podem ser visualizadas com a função <em>classification_report</em>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression </span>
+<span id="cb20-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb20-3" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> cross_val_predict(LogisticRegression(), x_treino_preparado, y_treino, cv <span class="op">=</span> <span class="dv">5</span>) <span class="co">#realizará a validação cruzada e retornará as predições</span></span>
+<span id="cb20-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_treino,pred))</span></code></pre></div>
+<pre><code>##               precision    recall  f1-score   support
+## 
+##            0       0.93      0.89      0.91       123
+##            1       0.90      0.94      0.92       126
+## 
+##     accuracy                           0.92       249
+##    macro avg       0.92      0.92      0.92       249
+## weighted avg       0.92      0.92      0.92       249</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier </span>
+<span id="cb22-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb22-3" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> cross_val_predict(KNeighborsClassifier(), x_treino_preparado, y_treino, cv <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb22-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_treino,pred))</span></code></pre></div>
+<pre><code>##               precision    recall  f1-score   support
+## 
+##            0       0.89      0.89      0.89       123
+##            1       0.89      0.89      0.89       126
+## 
+##     accuracy                           0.89       249
+##    macro avg       0.89      0.89      0.89       249
+## weighted avg       0.89      0.89      0.89       249</code></pre>
+<p>Observe que a regressão logistica se mostrou mais eficaz, logo será escolhida como
+o modelo de classificação.</p>
+</div>
+<div id="aprimoramento-do-modelo-1" class="section level2 unnumbered hasAnchor">
+<h2>Aprimoramento do modelo<a href="projeto-de-aprendizado-de-máquina-no-python.html#aprimoramento-do-modelo-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para o aprimoramento do modelo, será utilizado a pesquisa em grade(<em>Grid Search</em>).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb24-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb24-3" aria-hidden="true" tabindex="-1"></a>grade_aprimoramento<span class="op">=</span>{<span class="st">&quot;C&quot;</span>:[<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>]} <span class="co"># grade de hiperparâmetros</span></span>
+<span id="cb24-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb24-5" aria-hidden="true" tabindex="-1"></a>grade <span class="op">=</span> GridSearchCV(LogisticRegression(),grade_aprimoramento, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb24-6"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb24-7" aria-hidden="true" tabindex="-1"></a>grade.fit(x_treino_preparado,y_treino)</span></code></pre></div>
+<pre><code>## GridSearchCV(cv=5, estimator=LogisticRegression(),
+##              param_grid={&#39;C&#39;: [0.001, 0.01, 0.1, 1, 10, 100, 1000]})</code></pre>
+<p>Agora basta armazenar o melhor estimador encontrado.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb26-2" aria-hidden="true" tabindex="-1"></a>modelo_final <span class="op">=</span> grade.best_estimator_</span></code></pre></div>
+</div>
+<div id="teste-final-1" class="section level2 unnumbered hasAnchor">
+<h2>Teste final<a href="projeto-de-aprendizado-de-máquina-no-python.html#teste-final-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para a realização do teste final, será repetido o processo de transformação e imputação dos dados.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb27-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb27-2" aria-hidden="true" tabindex="-1"></a>x_teste <span class="op">=</span> df_teste.drop([<span class="st">&#39;sex&#39;</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb27-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb27-3" aria-hidden="true" tabindex="-1"></a>y_teste <span class="op">=</span> df_teste[<span class="st">&#39;sex&#39;</span>]</span>
+<span id="cb27-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb27-5" aria-hidden="true" tabindex="-1"></a>x_teste_preparado <span class="op">=</span> transformador.transform(x_teste)</span>
+<span id="cb27-6"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb27-7" aria-hidden="true" tabindex="-1"></a>modelo_final.fit(x_treino_preparado,y_treino)</span></code></pre></div>
+<pre><code>## LogisticRegression(C=1)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb29-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> modelo_final.predict(x_teste_preparado)</span>
+<span id="cb29-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_teste,y_pred))</span></code></pre></div>
+<pre><code>##               precision    recall  f1-score   support
+## 
+##            0       0.97      0.79      0.87        42
+##            1       0.82      0.98      0.89        42
+## 
+##     accuracy                           0.88        84
+##    macro avg       0.90      0.88      0.88        84
+## weighted avg       0.90      0.88      0.88        84</code></pre>
+<p>Agora, vamos criar a curva ROC. Para isso, devemos pegar as probabilidades de
+pertencer a cada classe juntamente com as taxas de falsos e verdadeiros positivos. Para
+a criação vamos usar a biblioteca <em>matplotlib</em></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve,roc_auc_score</span>
+<span id="cb31-2"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb31-3"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-4" aria-hidden="true" tabindex="-1"></a>y_pred_proba <span class="op">=</span> modelo_final.predict_proba(x_teste_preparado) <span class="co"># pegando as probabilidades de cada classe</span></span>
+<span id="cb31-5"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-6" aria-hidden="true" tabindex="-1"></a>taxa_falso_positivos, taxa_verdadeiros_positivos, _ <span class="op">=</span> roc_curve(y_teste,  y_pred_proba[:,<span class="dv">1</span>]) <span class="co"># pegando as taxas</span></span>
+<span id="cb31-7"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-8" aria-hidden="true" tabindex="-1"></a>auc <span class="op">=</span> roc_auc_score(y_teste, y_pred_proba[:,<span class="dv">1</span>]) <span class="co"># calculando a área sob a curva ROC</span></span>
+<span id="cb31-9"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb31-10" aria-hidden="true" tabindex="-1"></a>plt.plot(taxa_falso_positivos,taxa_verdadeiros_positivos,label<span class="op">=</span><span class="st">&quot;dados, auc=&quot;</span><span class="op">+</span><span class="bu">str</span>(auc))</span></code></pre></div>
+<pre><code>## [&lt;matplotlib.lines.Line2D object at 0x7fb112aafa90&gt;]</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb33-1" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## &lt;matplotlib.legend.Legend object at 0x7fb112aafd68&gt;</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="projeto-de-aprendizado-de-máquina-no-python.html#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Observe que o modelo obteve um desempenho satisfatório, logo está apto a realização de classificações.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="métricas-para-avaliação.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="projeto-de-aprendizado-de-máquina-no-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-praticas.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
