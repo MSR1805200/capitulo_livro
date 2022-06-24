@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA | CAPITULO 1 - APRENDIZADO DE MÁQUINA</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA | CAPITULO 1 - APRENDIZADO DE MÁQUINA" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Mateus Silva Rocha" />
+
+
+<meta name="date" content="2022-06-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="principais-paradigmas-de-aprendizado.html"/>
+<link rel="next" href="algoritmos-preditivos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>RESUMO</a></li>
+<li class="chapter" data-level="" data-path="introdução.html"><a href="introdução.html"><i class="fa fa-check"></i>INTRODUÇÃO</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html"><i class="fa fa-check"></i>PRINCIPAIS PARADIGMAS DE APRENDIZADO</a>
+<ul>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#supervisionado"><i class="fa fa-check"></i>Supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#não-supervisionado"><i class="fa fa-check"></i>Não supervisionado</a></li>
+<li class="chapter" data-level="" data-path="principais-paradigmas-de-aprendizado.html"><a href="principais-paradigmas-de-aprendizado.html#aprendizado-por-reforço"><i class="fa fa-check"></i>Aprendizado por reforço</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><i class="fa fa-check"></i>PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA</a>
+<ul>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#entendimento-do-problema-e-coleta-de-dados"><i class="fa fa-check"></i>Entendimento do problema e coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#divisão-do-conjunto-de-dados"><i class="fa fa-check"></i>Divisão do conjunto de dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#análise-exploratória"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#imputação-e-transformação-dos-dados"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#comparação-de-modelos"><i class="fa fa-check"></i>Comparação de modelos</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#aprimoramento-do-modelo"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html"><a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#teste-final"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html"><i class="fa fa-check"></i>ALGORITMOS PREDITIVOS</a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#k-vizinhos-mais-próximos"><i class="fa fa-check"></i>K-vizinhos mais próximos</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#árvore-de-decisão"><i class="fa fa-check"></i>Árvore de decisão</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#suport-vector-machinemáquinas-de-vetores-de-suporte"><i class="fa fa-check"></i><em>Suport Vector Machine</em>(Máquinas de vetores de suporte)</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#regressão-logística"><i class="fa fa-check"></i>Regressão Logística</a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#naive-bayes"><i class="fa fa-check"></i><em>Naive Bayes</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#modelos-ensemble"><i class="fa fa-check"></i>Modelos <em>Ensemble</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#random-forest"><i class="fa fa-check"></i><em>Random Forest</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#adaboost"><i class="fa fa-check"></i><em>AdaBoost</em></a></li>
+<li class="chapter" data-level="" data-path="algoritmos-preditivos.html"><a href="algoritmos-preditivos.html#gradient-boost"><i class="fa fa-check"></i><em>Gradient Boost</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html"><i class="fa fa-check"></i>MÉTRICAS PARA AVALIAÇÃO</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#subajuste-e-sobreajuste"><i class="fa fa-check"></i>Subajuste e Sobreajuste</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-classificação"><i class="fa fa-check"></i>Métricas para Classificação</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#matriz-de-confusão"><i class="fa fa-check"></i>Matriz de Confusão</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#acurácia"><i class="fa fa-check"></i>Acurácia</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#precisionprecisão"><i class="fa fa-check"></i><em>Precision</em>(Precisão)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#recallrevocação"><i class="fa fa-check"></i><em>Recall</em>(Revocação)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#f1-scorepontuação-f1"><i class="fa fa-check"></i>F1 <em>score</em>(Pontuação F1)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-roc"><i class="fa fa-check"></i>Curva <em>ROC</em></a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#curva-de-calibração"><i class="fa fa-check"></i>Curva de calibração</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#métricas-para-regressão"><i class="fa fa-check"></i>Métricas para Regressão</a>
+<ul>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#mseerro-quadrático-médio"><i class="fa fa-check"></i><em>MSE</em>(Erro quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#rmseraiz-quadrada-do-erro-quadrático-médio"><i class="fa fa-check"></i><em>RMSE</em>(Raiz Quadrada do Erro Quadrático Médio)</a></li>
+<li class="chapter" data-level="" data-path="métricas-para-avaliação.html"><a href="métricas-para-avaliação.html#maeerro-médio-absoluto"><i class="fa fa-check"></i><em>MAE</em>(Erro médio absoluto)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no <em>python</em></a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#entendimento-do-problema"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#bibliotecas-utilizadas"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#coleta-de-dados"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#divisão-dos-dados"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#análise-exploratória-1"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#imputação-e-transformação-dos-dados-1"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#comparação-entre-modelos"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#aprimoramento-do-modelo-1"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-python.html"><a href="projeto-de-aprendizado-de-máquina-no-python.html#teste-final-1"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html"><i class="fa fa-check"></i>Projeto de Aprendizado de Máquina no R</a>
+<ul>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#entendimento-do-problema-1"><i class="fa fa-check"></i>Entendimento do problema</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#bibliotecas-utilizadas-1"><i class="fa fa-check"></i>Bibliotecas utilizadas</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#coleta-de-dados-1"><i class="fa fa-check"></i>Coleta de dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#divisão-dos-dados-1"><i class="fa fa-check"></i>Divisão dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#análise-exploratória-2"><i class="fa fa-check"></i>Análise exploratória</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#imputação-e-transformação-dos-dados-2"><i class="fa fa-check"></i>Imputação e transformação dos dados</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#comparação-entre-modelos-1"><i class="fa fa-check"></i>Comparação entre modelos</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#aprimoramento-do-modelo-2"><i class="fa fa-check"></i>Aprimoramento do modelo</a></li>
+<li class="chapter" data-level="" data-path="projeto-de-aprendizado-de-máquina-no-r.html"><a href="projeto-de-aprendizado-de-máquina-no-r.html#teste-final-2"><i class="fa fa-check"></i>Teste final</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAPITULO 1 - APRENDIZADO DE MÁQUINA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina" class="section level1 unnumbered hasAnchor">
+<h1>PASSOS PARA A REALIZAÇÃO DE UM PROJETO DE APRENDIZADO DE MÁQUINA<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>O processo de implementação de um modelo de aprendizado de máquina segue
+um conjunto de passos sistematizados que envolve desde a coleta dos dados
+propriamente ditos até a avaliação final do modelo.</p>
+<div id="entendimento-do-problema-e-coleta-de-dados" class="section level2 unnumbered hasAnchor">
+<h2>Entendimento do problema e coleta de dados<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#entendimento-do-problema-e-coleta-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para começar a realizar um projeto ponta a ponta de aprendizado de máquina,
+deve-se ter em mente que tipo de problema se quer resolver e quais objetivos que
+precisam ser atingidos. Não se pode trabalhar com a implementação sem conhecer
+o problema que se quer resolver, pois impactará na forma que você desenvolve
+o projeto, quais modelos utilizar ou qual métrica será mais adequada.</p>
+<p>Definindo o problema e os objetivos, o proximo passso é coletar os dados. Dependendo
+do problema, os dados já estarão prontos para serem usados. Um exemplo seria se
+quisesse predizer quais pessoas sobreviveram no naufrágio do Titanic, nesse caso
+já temos uma plataforma <em>online</em> que nos dá o conjunto de dados de antemão denominado
+<em>Kaggle</em>. Caso não encontre nenhum banco de dados nas plataformas <em>online</em>, uma
+possível alternativa seria realizar um processo de amostragem. Vale lembrar que
+a coleta possui papel central no projeto, pois se de algum modo estiver enviesada,
+esse viés reflitará no modelo final.</p>
+</div>
+<div id="divisão-do-conjunto-de-dados" class="section level2 unnumbered hasAnchor">
+<h2>Divisão do conjunto de dados<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#divisão-do-conjunto-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Feito a coleta, antes de realizar qualquer análise, deve ser feito uma divisão
+na base de dados. A técnica mais utilizada nesse primeiro momento chama-se
+<em>holdout</em>, onde é escolhido uma proporção <span class="math inline">\(p\)</span> para o conjunto de treino
+e seu complementar <span class="math inline">\(1 - p\)</span> será usado no conjunto de teste. Geralmente é
+utilizado <span class="math inline">\(80\%\)</span> dos dados totais para o treinamento e <span class="math inline">\(20\%\)</span> para o
+teste do modelo.</p>
+<p>O conjunto de treinamento é bastante usado em todo o processo na criação do
+projeto. É nele que realizamos as análises e alimentamos os modelos. Já o conjunto
+de teste é utilizado apenas uma única vez na parte final do projeto com o objetivo
+de estimar o erro fora da amostra ou também chamado de erro de generalização.</p>
+</div>
+<div id="análise-exploratória" class="section level2 unnumbered hasAnchor">
+<h2>Análise exploratória<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#análise-exploratória" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Na análise exploratória é onde é feito as análises descritivas no conjunto de dados
+de treino, como por exemplo: medidas de tendências central, grau de disparidade,
+etc. É feito gráficos para observar o comportamento e as relações entre variáveis.
+É nele também onde podemos combinar variáveis para criar uma nova que talvez
+ajude o modelo. Esse processo tem o nome de <em>feature engineering</em> ou engenharia
+de recursos.</p>
+</div>
+<div id="imputação-e-transformação-dos-dados" class="section level2 unnumbered hasAnchor">
+<h2>Imputação e transformação dos dados<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#imputação-e-transformação-dos-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Feito o processo de análise exploratória, o proximo passo será imputar e transformar
+o conjunto de dados de treino para então usá-lo para escolher o modelo.</p>
+<p>O processo de imputação consiste em preencher valores ausentes em um conjunto de dados.
+Geralmente é utilizado medidas de tendência central como média e mediana para
+valores numéricos e a moda para valores categóricos. Uma possível alternativa
+seria também usar um modelo de aprendizado de máquina para preencher os valores,
+como por exemplo o método de vizinhos mais próximos.</p>
+<p>Na etapa de transformação, realizamos processos de conversão de variáveis categóricas
+para numéricas, como por exemplo o <em>one-hot-encodidng</em>. Ele produz colunas binárias
+para cada categoria em uma coluna e adiciona o valor <span class="math inline">\(1\)</span> caso cada instância possua
+a categoria da coluna binária. Outros dois processos que são amplamente utilizados
+são a normalização e a padronização. A normalização deixa os valores das colunas
+situados entre o intevalo de <span class="math inline">\(0\)</span> a <span class="math inline">\(1\)</span>, já a padronização redimenciona os valores
+para terem média <span class="math inline">\(0\)</span> e variancia <span class="math inline">\(1\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figuras/dummy.png" alt="Transformação de variáveis categóricas" width="1036" />
+<p class="caption">
+Figure 4: Transformação de variáveis categóricas
+</p>
+</div>
+</div>
+<div id="comparação-de-modelos" class="section level2 unnumbered hasAnchor">
+<h2>Comparação de modelos<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#comparação-de-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Feito todo o processo de imputação e transoformação, chega a hora de escolher o
+modelo de aprendizado de máquina. Essa etapa pode ser realizada refazendo a técnica
+de <em>holdout</em> dividindo os dados de treino em dois: treino e validação. Geralmente
+é feita outra técnica denominada validação cruzada. Nela dividimos os dados em
+<span class="math inline">\(K\)</span> pacotes também chamados de <em>folds</em> e em cada iteração, um pacote será utilizado
+para teste e o resto para treino. Esse método é mais vantajoso que a técnica de
+<em>hodout</em>, pois usa todo o conjunto de dados de treino, invés de separa-lo em dois,
+porém é muito custoso em termos computacionais.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="figuras/validacao_cruzada.png" alt="Validação cruzada" width="1108" />
+<p class="caption">
+Figure 5: Validação cruzada
+</p>
+</div>
+<p>Cada modelo será avalidado de acordo com as métricas pré-estabelecidas no início
+e será escolhido o modelo que tiver melhor performance tanto nas métricas como
+também na velocidade de treino.</p>
+</div>
+<div id="aprimoramento-do-modelo" class="section level2 unnumbered hasAnchor">
+<h2>Aprimoramento do modelo<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#aprimoramento-do-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Escolhido o modelo, o próximo passo será aprimora-lo escolhendo os melhores valores
+de seues hiperparâmetros. Um hiperparâmetro não é estimado, mas sim escolhido
+pelo usuário, portanto se fazem técnicas de busca desses parâmetros como o que
+é conhecido como pesquisa em grade ou <em>grid search</em>. A pesquisa em grade usa
+uma grade pré-estabelecida de valores de hiperparâmetros e busca os melhores
+baseando-se em sua métrica. Há também o <em>random search</em> que faz o mesmo processo,
+porém não utiliza todos os valores, aleatorizando o processo.</p>
+</div>
+<div id="teste-final" class="section level2 unnumbered hasAnchor">
+<h2>Teste final<a href="passos-para-a-realização-de-um-projeto-de-aprendizado-de-máquina.html#teste-final" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Realizando todo o processo de aprimoramento, o passo final é testar na base
+de dados de teste. Antes de testar, deve-se realizar o processo de imputação e
+transformação dos dados antes utilizados no treinamento. Feito isso basta alimentar
+o modelo aprimorado com a base de teste e testa-lo.</p>
+<p>Obtendo um desempemho satisfatório, o modelo está apto a realizar a tarefa que
+foi específicada na problemática da situação, como por exemplo subi-lo na nuvem,
+isto é coloca-lo <em>online</em> para outras pessoas utilizarem.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="principais-paradigmas-de-aprendizado.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="algoritmos-preditivos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-passos.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
